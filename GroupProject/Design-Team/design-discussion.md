@@ -1,6 +1,6 @@
 # Design Discussion
 
-## Design 1 []
+## Design 1 [Dan]
 ![Design 1](../images/Design1.png)
 ### Pros
 
