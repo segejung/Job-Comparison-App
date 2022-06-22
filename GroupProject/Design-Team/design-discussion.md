@@ -8,7 +8,7 @@
 ### Cons
 
 ## Design 2 []
-![Design 2](../images/Design2.png)
+![Design 2](../images/design2.png)
 ### Pros
 
 
@@ -16,7 +16,7 @@
 
 
 ## Design 3 []
-![Design 3](../images/Design3.png) 
+![Design 3](../images/design3.png) 
 ### Pros
 
   
@@ -24,7 +24,7 @@
 
 
 ## Design 4 []
-![Design 4](../images/Design4.png) 
+![Design 4](../images/design4.png) 
 ### Pros
 
 
@@ -32,7 +32,7 @@
 
 
 ## Team Design 
-![Team Design](../images/TeamDesign.png) 
+![Team Design](../images/teamDesign.png) 
 
 
 
