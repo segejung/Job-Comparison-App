@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SeekBar
+        android:id="@+id/seekBarBonus"
+        android:layout_width="158dp"
+        android:layout_height="34dp"
+        android:max="5"
+        android:min="1"
+        tools:layout_editor_absoluteX="199dp"
+        tools:layout_editor_absoluteY="215dp" />
+
+    <SeekBar
+        android:id="@+id/seekBarRetirement"
+        android:layout_width="158dp"
+        android:layout_height="34dp"
+        android:max="5"
+        android:min="1"
+        tools:layout_editor_absoluteX="199dp"
+        tools:layout_editor_absoluteY="286dp" />
+
+    <SeekBar
+        android:id="@+id/seekBarRelocation"
+        android:layout_width="158dp"
+        android:layout_height="34dp"
+        android:max="5"
+        android:min="1"
+        tools:layout_editor_absoluteX="199dp"
+        tools:layout_editor_absoluteY="348dp" />
+
+    <SeekBar
+        android:id="@+id/seekBarTraining"
+        android:layout_width="158dp"
+        android:layout_height="34dp"
+        android:max="5"
+        android:min="1"
+        tools:layout_editor_absoluteX="199dp"
+        tools:layout_editor_absoluteY="401dp" />
+
+    <TextView
+        android:id="@+id/settingsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="69dp" />
+
+    <TextView
+        android:id="@+id/salaryWeightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salary Weight"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="166dp" />
+
+    <TextView
+        android:id="@+id/bonusWeightText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bonus Weight"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="230dp" />
+
+    <TextView
+        android:id="@+id/retirementWeightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retirement Weight"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="293dp" />
+
+    <TextView
+        android:id="@+id/relocationWeightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Relocation Weight"
+        tools:layout_editor_absoluteX="51dp"
+        tools:layout_editor_absoluteY="356dp" />
+
+    <TextView
+        android:id="@+id/trainingWeightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Training Weight"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="409dp" />
+
+    <SeekBar
+        android:id="@+id/seekBarSalary"
+        android:layout_width="158dp"
+        android:layout_height="34dp"
+        android:max="5"
+        android:min="1"
+        tools:layout_editor_absoluteX="199dp"
+        tools:layout_editor_absoluteY="159dp" />
+
+    <Button
+        android:id="@+id/cancelSettingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        tools:layout_editor_absoluteX="217dp"
+        tools:layout_editor_absoluteY="504dp" />
+
+    <Button
+        android:id="@+id/saveSettingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="504dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
