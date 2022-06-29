@@ -3,14 +3,42 @@
 **Author**: \<SeGe Jung\>
 
 ## 1 Use Case Diagram
-
-*This section should contain a use case diagram with all the actors and use cases for the system, suitably connected.*
+![](../images/useCase.png)
 
 ## 2 Use Case Descriptions
 
-*For each use case in the use case diagram, this section should contain a description, with the following elements:*
+1. Update current job
+- *Requirements: this allows users to update/edit current job details*
+- *Pre-conditions: this is only accessible via the main UI*
+- *Post-conditions: job detail should be either saved or discarded*
+- *Scenarios:*
+    - User clicks on update job button
+    - User edits details
+    - User saves the detail    
 
-- *Requirements: High-level description of what the use case must allow the user to do.*
-- *Pre-conditions: Conditions that must be true before the use case is run.*
-- *Post-conditions Conditions that must be true once the use case is run.*
-- *Scenarios: Sequence of events that characterize the use case. This part may include multiple scenarios, for normal, alternate, and exceptional event sequences. These scenarios may be expressed as a list of steps in natural language or as sequence diagrams.*
+2. Enter a job offer
+- *Requirements: this allows users to enter a new job offer*
+- *Pre-conditions: this is accessible via the main UI*
+- *Post-conditions: job offer must be created and added to a job list*
+- *Scenarios:*
+    - User clicks on enter a job offer
+    - User enters job details
+    - User saves job 
+
+3. Compare jobs
+- *Requirements: this allows users to compare jobs*
+- *Pre-conditions: Must be at least two jobs entered to compare*
+- *Post-conditions: user will see a list of jobs with scores*
+- *Scenarios:*
+    - User clicks compare job
+    - User views a list of jobs with score    
+
+4. Adjust settings
+- *Requirements: this allows users to adjust weight settings for the equation*
+- *Pre-conditions: this is accessible via the main UI*
+- *Post-conditions: changed setting should be changed and reflected in the job compare*
+- *Scenarios:*
+    - User clicks adjust settings
+    - User changes weights
+    - User clicks save
+    - User views new score in the job compare 
