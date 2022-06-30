@@ -12,7 +12,7 @@ A job comparison application that allows you to compare the current job with any
 ## 2 Process Description
 
 ### Creating the Job Entry Page
-- *Activity description (concise paragraph)*
+- We will create the 
 - *Entrance criteria (inputs needed for the activity)*
 - *Exit criteria (outputs produced by the activity and how you know it has been completed satisfactorily)*
 

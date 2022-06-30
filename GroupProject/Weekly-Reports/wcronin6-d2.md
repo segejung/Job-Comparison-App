@@ -1,0 +1,4 @@
+- Project Plan markdown file
+- Design Document (Section 1)
+- Job Details Class
+- If time Job Ranking
