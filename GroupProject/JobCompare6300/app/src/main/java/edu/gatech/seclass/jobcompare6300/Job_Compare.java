@@ -7,18 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Job_Entry extends AppCompatActivity {
+public class Job_Compare extends AppCompatActivity {
 
-    private Button saveBtn;
-    private Button cancelBtn;
+    private Button goBackBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_job__entry);
+        setContentView(R.layout.activity_job__compare);
 
-        cancelBtn = (Button)findViewById(R.id.cancelJobEntryBtn);
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
+        goBackBtn = (Button)findViewById(R.id.goBackButton);
+        goBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMainMenu();
@@ -27,11 +26,7 @@ public class Job_Entry extends AppCompatActivity {
     }
 
     public void openMainMenu() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
-
-
-
-
 }

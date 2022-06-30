@@ -7,31 +7,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Job_Entry extends AppCompatActivity {
+public class Settings extends AppCompatActivity {
 
-    private Button saveBtn;
     private Button cancelBtn;
+    private Button saveSettingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_job__entry);
+        setContentView(R.layout.activity_settings);
 
-        cancelBtn = (Button)findViewById(R.id.cancelJobEntryBtn);
+        cancelBtn = (Button)findViewById(R.id.cancelButton);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMainMenu();
+                returnToMainMenu();
             }
         });
     }
 
-    public void openMainMenu() {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void returnToMainMenu() {
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
-
-
-
-
 }

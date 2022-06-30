@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.gatech.seclass.jobcompare6300">
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCompare6300">
-        <activity android:name=".Job_Entry"></activity>
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".Job_Compare" />
+        <activity android:name=".Job_Entry" />
 
         <meta-data
             android:name="com.google.android.wearable.standalone"
