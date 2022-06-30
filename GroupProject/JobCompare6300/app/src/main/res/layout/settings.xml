@@ -144,7 +144,7 @@
         app:layout_constraintVertical_bias="0.238" />
 
     <Button
-        android:id="@+id/cancelSettingButton"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancel"
@@ -156,7 +156,7 @@
         app:layout_constraintVertical_bias="0.737" />
 
     <Button
-        android:id="@+id/saveSettingButton"
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
