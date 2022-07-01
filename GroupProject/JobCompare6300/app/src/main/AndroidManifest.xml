@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCompare6300">
-        <activity android:name=".Settings"></activity>
+        <activity android:name=".All_Jobs_Display"></activity>
+        <activity android:name=".Settings" />
         <activity android:name=".Job_Compare" />
         <activity android:name=".Job_Entry" />
 
