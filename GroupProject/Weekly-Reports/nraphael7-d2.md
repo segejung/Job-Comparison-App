@@ -3,6 +3,7 @@
 - Job Handler Class
 - Design Document Markdown File (Section 2)
 - Collaborated on the Project Plan
-- Created UI for the Job Entry Layout
+- Created UI for the Job Entry Layout, Job List Display Layout
 - Linked the Main Menu UI to the Job Entry, Job Compare, and Settings UI
 - Linked the cancel or go back buttons for the Job Entry, Job Compare, and Settings UI back to the Main Menu return
+- (Missed the individual submission of the d1 weekly report, but it is present in the team repository at the time of group submission for d1, just in case you needed a record of what I completed individually.)
