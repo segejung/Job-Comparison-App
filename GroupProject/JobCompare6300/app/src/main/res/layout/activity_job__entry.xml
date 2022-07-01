@@ -43,7 +43,7 @@
 
                 <EditText
                     android:id="@+id/TitleLabel"
-                    android:layout_width="5dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -51,12 +51,14 @@
                     android:text="Title"
                     android:textAlignment="center" />
 
-                <TextView
+                <EditText
                     android:id="@+id/TitleEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
 
             </LinearLayout>
 
@@ -78,7 +80,7 @@
 
                 <EditText
                     android:id="@+id/companyLabel"
-                    android:layout_width="5dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -86,12 +88,15 @@
                     android:text="Company"
                     android:textAlignment="center" />
 
-                <TextView
-                    android:id="@+id/companyEntryField"
+                <EditText
+                    android:id="@+id/CompanyEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -111,21 +116,24 @@
                 android:orientation="horizontal">
 
                 <EditText
-                    android:id="@+id/cityLabel"
-                    android:layout_width="6dp"
+                    android:id="@+id/locationLabel"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="none"
-                    android:text="City"
+                    android:text="Location"
                     android:textAlignment="center" />
 
-                <TextView
-                    android:id="@+id/CityEntryField"
+                <EditText
+                    android:id="@+id/LocationEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -141,25 +149,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/StateTitle"
-                    android:layout_width="8dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="none"
-                    android:text="State"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/StateEntryField"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="#FFFFFF" />
-            </LinearLayout>
+                android:orientation="horizontal"/>
         </LinearLayout>
 
         <Space
@@ -178,7 +168,7 @@
 
                 <EditText
                     android:id="@+id/CostOfLivLabel"
-                    android:layout_width="6dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -186,12 +176,15 @@
                     android:text="Cost of Living"
                     android:textAlignment="center" />
 
-                <TextView
-                    android:id="@+id/CoLEntryField"
+                <EditText
+                    android:id="@+id/CostOfLivingEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -212,7 +205,7 @@
 
                 <EditText
                     android:id="@+id/salaryLabel"
-                    android:layout_width="8dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -220,12 +213,15 @@
                     android:text="Salary (annual)"
                     android:textAlignment="center" />
 
-                <TextView
-                    android:id="@+id/salaryEntryField"
+                <EditText
+                    android:id="@+id/SalaryEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -245,7 +241,7 @@
 
                 <EditText
                     android:id="@+id/BonusLabel"
-                    android:layout_width="11dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -253,12 +249,15 @@
                     android:text="Bonus (annual)"
                     android:textAlignment="center" />
 
-                <TextView
+                <EditText
                     android:id="@+id/BonusEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -279,7 +278,7 @@
 
                 <EditText
                     android:id="@+id/RetirementBenefitsLabel"
-                    android:layout_width="8dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -287,13 +286,17 @@
                     android:text="Retirement Benefits"
                     android:textAlignment="center" />
 
-                <TextView
-                    android:id="@+id/retirementEntryField"
+                <EditText
+                    android:id="@+id/RetirementBenefitsEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
+
         </LinearLayout>
 
         <Space
@@ -312,7 +315,7 @@
 
                 <EditText
                     android:id="@+id/ReloTitle"
-                    android:layout_width="6dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -320,12 +323,15 @@
                     android:text="Relocation stipend"
                     android:textAlignment="center" />
 
-                <TextView
-                    android:id="@+id/reloEntryField"
+                <EditText
+                    android:id="@+id/RelocationStipendEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -345,7 +351,7 @@
 
                 <EditText
                     android:id="@+id/TrainingFundTitle"
-                    android:layout_width="8dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -353,12 +359,15 @@
                     android:text="Training fund (annual)"
                     android:textAlignment="center" />
 
-                <TextView
-                    android:id="@+id/trainingFundEntryField"
+                <EditText
+                    android:id="@+id/TrainingFundEntryField"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="45dp"
                     android:layout_weight="1"
-                    android:background="#FFFFFF" />
+                    android:background="#FFFFFF"
+                    android:ems="10"
+                    android:inputType="number" />
+
             </LinearLayout>
         </LinearLayout>
 

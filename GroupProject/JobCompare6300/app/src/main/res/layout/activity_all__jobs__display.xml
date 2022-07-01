@@ -20,7 +20,7 @@
             android:background="#B3A369"
             android:ems="10"
             android:inputType="none"
-            android:text="Jobs Currently In the DB"
+            android:text="@string/JobsCurrentlyIntheDB"
             android:textAlignment="center" />
 
         <LinearLayout
@@ -61,7 +61,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:inputType="none"
-                            android:text="Job 1 Selection"
+                            android:text="@string/Job1Selection"
                             android:textAlignment="center" />
 
                         <TextView
@@ -70,7 +70,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:inputType="none"
-                            android:text="Job 2 Selection"
+                            android:text="@string/Job2Selection"
                             android:textAlignment="center" />
 
                     </LinearLayout>
@@ -101,19 +101,23 @@
 
                         <Button
                             android:id="@+id/compareInitiateBtn"
+                            style="@style/Widget.AppCompat.Button"
                             android:layout_width="91dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:backgroundTint="#003057"
-                            android:text="Compare Jobs" />
+                            android:text="@string/CompareJobs"
+                            android:textSize="18sp" />
 
                         <Button
                             android:id="@+id/cancelBtnOnJobDisplay"
+                            style="@style/Widget.AppCompat.Button"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:backgroundTint="#003057"
-                            android:text="Cancel" />
+                            android:text="@string/Cancel"
+                            android:textSize="18sp" />
                     </LinearLayout>
 
                 </LinearLayout>

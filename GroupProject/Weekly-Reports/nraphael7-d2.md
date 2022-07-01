@@ -1,4 +1,4 @@
-- SQLite Integration
+- SQLite Integration [helpful_Link that I used to do so](https://www.youtube.com/watch?v=312RhjfetP8&ab_channel=freeCodeCamp.org)
 - Job Offer Handler Class
 - Job Handler Class
 - Design Document Markdown File (Section 2)

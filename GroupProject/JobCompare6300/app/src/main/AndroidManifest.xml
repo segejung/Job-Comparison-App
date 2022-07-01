@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JobCompare6300">
+        android:theme="@style/Theme.JobCompare6300"
+        android:usesCleartextTraffic="true">
         <activity android:name=".All_Jobs_Display"></activity>
         <activity android:name=".Settings" />
         <activity android:name=".Job_Compare" />
