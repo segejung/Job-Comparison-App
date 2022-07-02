@@ -121,6 +121,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
                 JobDetails listedJob = new JobDetails(jobTitle,jobCompanyName,jobLocation,
                         jobCostOfLiving,jobAnnualSalary,jobAnnualBonus,jobRetirementBenefits,
                         jobRelocationStipend,jobTrainingAndDevFund,currentJobIndicator);
+                returnedJobOffers.add(listedJob);
 
             } while (cursor.moveToNext());
         } else {
