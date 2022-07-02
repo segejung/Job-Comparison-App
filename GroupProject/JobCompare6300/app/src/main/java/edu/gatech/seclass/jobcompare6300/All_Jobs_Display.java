@@ -37,15 +37,32 @@ public class All_Jobs_Display extends AppCompatActivity {
 
 
         compareSelectedBtn = findViewById(R.id.compareJobsButtonId);
+        compareSelectedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startComparison();
+                Toast.makeText(All_Jobs_Display.this,"Starting comparison",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         cancelCompareBtn = findViewById(R.id.cancelBtnOnJobDisplay);
         cancelCompareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 returnToMainMenu();
+                Toast.makeText(All_Jobs_Display.this,"Returning to main menu",
+                        Toast.LENGTH_SHORT).show();
             }
         });
 
 
+    }
+
+    public void startComparison() {
+        Intent intent = new Intent(this, Job_Compare.class);
+        startActivity(intent);
     }
 
     public void returnToMainMenu() {
