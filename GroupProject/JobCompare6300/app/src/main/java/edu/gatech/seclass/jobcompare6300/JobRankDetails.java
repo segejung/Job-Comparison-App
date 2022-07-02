@@ -11,6 +11,7 @@ public class JobRankDetails extends JobDetails {
     private int retirementWeight;
     private int relocationWeight;
     private int trainingWeight;
+    private boolean currentJob;
 
     private int AYS;
     private int AYB;
@@ -21,9 +22,9 @@ public class JobRankDetails extends JobDetails {
 
     public JobRankDetails(String title, String company, String location, int costOfLiving,
                           int yearlySalary, int yearlyBonus, int retirementBenefits,
-                          int relocationStipend, int trainingAndDevelopmentFund) {
+                          int relocationStipend, int trainingAndDevelopmentFund, boolean currentJobStatus) {
         super(title, company, location, costOfLiving, yearlySalary, yearlyBonus, retirementBenefits,
-                relocationStipend, trainingAndDevelopmentFund);
+                relocationStipend, trainingAndDevelopmentFund,currentJobStatus);
 
         // need to adjust these based on cost of living
         this.AYS = yearlySalary;
