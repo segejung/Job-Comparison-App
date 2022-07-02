@@ -32,17 +32,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="28dp" />
 
+            <ListView
+                android:id="@+id/jobListEntries"
+                android:layout_width="match_parent"
+                android:layout_height="358dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="272dp"
-                    android:textAlignment="center">
-
-                </androidx.recyclerview.widget.RecyclerView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
