@@ -44,4 +44,51 @@ The system has to be run on hardware that runs on the Android OS. Specifically, 
 *<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
 
 ## 4 User Interface Design
-*For GUI-based systems, this section should provide the specific format/layout of the user interface of the system (e.g., in the form of graphical mockups).*
+
+- Here are a the images of our current application's guided user interfaces.
+
+### Main Menu
+
+- Here is the main menu UI for our application, also known as our main entry point. The user will have four options (truly only three if no job offers have been entered yet). 
+
+![](../images/Main_Menu_UI.JPG)
+
+### Update Current Job
+
+- Here is the UI for updating the user's current job. The goal is to have this automatically set the entry to the current job and release the prior current job's designation.
+
+![](../images/Update_Current_Job_UI.JPG)
+
+
+### Job Entry
+
+- Here is the UI for just entering in job offers received. Using the switch at the bottom the user can designate if the job being entered will be the new current job, rather than the automatic designation presented in the Update_Current_Job UI.
+
+![](../images/Job_Entry_UI.JPG)
+
+### Adjust Settings Page
+
+- Here is the UI for adjusting the settings of the integer weights. We decided to go with a slider to constrain the types of inputs available for the user.
+
+![](../images/Adjust_Settings_UI.JPG)
+
+
+
+### All Jobs Page
+
+- Here is the All Jobs page that is present when you want to initiate a comparison, but need to look at the jobs that need to be compared.
+
+![](../images/All_Jobs_Display_unpopulated_UI.JPG)
+
+- There are two spinners present under the list view that will populate with the job titles and the id numbers once the user chooses to view all.
+
+- Here is how it looks populated.
+
+![](../images/All_Jobs_Display_populated_UI.JPG)
+
+### Job Comparison
+
+- Here is the UI for performing the job comparison. This is behind the All_Jobs_Display UI since you have to select the jobs using the spinners for it to be ported over to the comparison table.
+- The "Go Back" button provides the user a way to return to the main menu.
+
+![](../images/Job_Compare_UI.JPG)
