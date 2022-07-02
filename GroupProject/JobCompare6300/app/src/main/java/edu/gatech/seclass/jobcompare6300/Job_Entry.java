@@ -53,9 +53,7 @@ public class Job_Entry extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(Job_Entry.this, "I do something", Toast.LENGTH_LONG).show();
 
-
                 // Creating a job with the entered details
-
                 try { // Try catch for any input exceptions
 
 
