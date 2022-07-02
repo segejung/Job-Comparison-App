@@ -36,7 +36,7 @@ public class JobRankDetails extends JobDetails {
     }
 
     private double computeJobScore() {
-        return AYS * salaryWeight + AYB * bonusWeight + (RBP * AYS / 100) * retirementWeight +
-                RS * relocationWeight + TDF * trainingWeight;
+        return AYS * (salaryWeight/7) + AYB * (bonusWeight/7) + (RBP * AYS / 100) * (retirementWeight/7) +
+                RS * (relocationWeight/7) + TDF * (trainingWeight/7);
     }
 }
