@@ -47,7 +47,7 @@ Exit criteria for this activity would be restarting the application and seeing t
 
 For the purposes of testing and validating the application, a testing suite will be implemented. This suite of tests will validate the application and its functionalities in order it determine if the presented product sufficiently meets all requirements and constraints.
 
-For the entrance criteria of this activity, the application must be able to compile and run successfully. The application must also be able to (more)
+For the entrance criteria of this activity, the application must be able to compile and run successfully.
 
 The activity of the test suite should have the exit criteria of completing the tests and resulting in a successful test. 
 
