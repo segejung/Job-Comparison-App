@@ -36,10 +36,11 @@ Test case ID | Purpose | Steps | Expected result | Actual result | Pass/Fail
 :---: | :---: | :---: | :---: | :---: | :---: |
 U1.1 | User can enter the current job | Fill out the job details and click Save | currentJob is updated in JobHandler and saved in the SQLite database | - | -
 U1.2 | User can cancel entering the current job | Fill out the job details and click Cancel | if currentJob is null, it is not created and saved in the database | - | -
-U1.3 | State field in the job entry is valid (two letters) | Enter an invalid state (e.g. "NA") in the field | Error is thrown | - | -
-U1.4 | Cost Of Living index in the job entry is between 1-500 | Enter the number 700 in the field | Error is thrown | - | -
-U1.5 | The retirement benefits in the job entry is between 0-100 | Enter the number 102 in the field | Error is thrown | - | -
-U1.6 | The training and development fund in the job entry is between 0 to 18000 | Enter the number 20000 in the field | Error is thrown | - | -
+U1.3 | City field in the job entry is valid (letters only) | Enter a city containing a number (e.g. "29 palms") | Error is thrown | - | -
+U1.4 | State field in the job entry is valid (two letters) | Enter an invalid state (e.g. "NA") in the field | Error is thrown | - | -
+U1.5 | Cost Of Living index in the job entry is between 1-500 | Enter the number 700 in the field | Error is thrown | - | -
+U1.6 | The retirement benefits in the job entry is between 0-100 | Enter the number 102 in the field | Error is thrown | - | -
+U1.7 | The training and development fund in the job entry is between 0 to 18000 | Enter the number 20000 in the field | Error is thrown | - | -
 U2.1 | User can enter a job offer | Fill out the offer details and save | jobOffer is updated in JobOfferHandler and saved in the SQLite database | - | -
 U2.2 | User can compare the offer with the current job | Enter the current job details and enter the job offer details, and then invoke compareWithCurrent() | Table is shown with the two jobs containing the correct details | - | -
 U2.3 | User cannot compare the offer with the current job that is not entered | Enter the job offer details only (no current job) and then invoke compareWithCurrent() | Error is thrown | - | -
