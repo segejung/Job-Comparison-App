@@ -62,7 +62,7 @@ public class Update_Current_Job extends AppCompatActivity {
 
                     //saveCurrentJobEntry();
                     Toast.makeText(Update_Current_Job.this,
-                            "Job Saved", Toast.LENGTH_SHORT).show();
+                            "New Current Job Saved", Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
 
@@ -73,7 +73,7 @@ public class Update_Current_Job extends AppCompatActivity {
                 }
 
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(Update_Current_Job.this);
-                Toast.makeText(Update_Current_Job.this,"New Current Job Saved", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
