@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
     public void openAdjustSettingsActivity() {
         Intent intent = new Intent(this,Settings.class);
         startActivity(intent);
+
+        // setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_job);
+
     }
 
 
