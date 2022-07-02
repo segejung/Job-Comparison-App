@@ -30,6 +30,15 @@ public class Update_Current_Job extends AppCompatActivity {
         setContentView(R.layout.activity_update__current__job);
 
         titleEntryField = findViewById(R.id.titleInputTextId);
+        companyEntryField = findViewById(R.id.companyInputTextId);
+        locationEntryField = findViewById(R.id.LocationInputTextId);
+        costOfLivingEntryField = findViewById(R.id.colInputTextId);
+        annualSalaryEntryField = findViewById(R.id.salaryInputTextId);
+        annualBonusEntryField = findViewById(R.id.bonusInputTextId);
+        retirementBenefitsEntryField = findViewById(R.id.benefitsInputTextId);
+        relocationStipendEntryField = findViewById(R.id.stipendInputTextId);
+        trainingFundEntryField = findViewById(R.id.trainingInputTextId);
+
 
         cancelCurrentJob = (Button)findViewById(R.id.cancelCurrentJobButtonId);
         cancelCurrentJob.setOnClickListener(new View.OnClickListener() {
@@ -45,12 +54,14 @@ public class Update_Current_Job extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                JobDetails jobOfferDetails = new JobDetails();
+
 
                 // Creating a job with the entered details
                 try { // Try catch for any input exceptions
 
 
-                    JobDetails jobOfferDetails = new JobDetails(
+                    jobOfferDetails = new JobDetails(
                             titleEntryField.getText().toString(),
                             companyEntryField.getText().toString(),
                             locationEntryField.getText().toString(),
@@ -64,19 +75,30 @@ public class Update_Current_Job extends AppCompatActivity {
 
                     // TODO: Update the database to turn the prior current job to false and leave this as true
 
+                    DataBaseHelper dataBaseHelper = new DataBaseHelper(Update_Current_Job.this);
+                    boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
+
+                    Toast.makeText(Update_Current_Job.this,
+                            "Successfully added to db ? " + dbSuccess,Toast.LENGTH_SHORT).show();
+
                     //saveCurrentJobEntry();
                     Toast.makeText(Update_Current_Job.this,
                             "New Current Job Saved", Toast.LENGTH_SHORT).show();
+
+                    // TODO: Fix bug where current job indicator doesn't carry over
 
                 } catch (Exception e) {
 
                     Toast.makeText(Update_Current_Job.this,
                             "Exception caught and data not saved.",
                             Toast.LENGTH_SHORT).show();
+                    boolean dbSuccess = false;
+
+                    Toast.makeText(Update_Current_Job.this,
+                            "No successful add due to prior exception.",Toast.LENGTH_SHORT).show();
 
                 }
 
-                DataBaseHelper dataBaseHelper = new DataBaseHelper(Update_Current_Job.this);
 
             }
         });
@@ -89,7 +111,7 @@ public class Update_Current_Job extends AppCompatActivity {
 
     }
 
-    public void saveCurrentJobEntry() {
+    public void saveCurrentJobEntry() { // This is done in the onClick method
 
 
     }
