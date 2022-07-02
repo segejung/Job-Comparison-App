@@ -88,6 +88,7 @@ public class Job_Entry extends AppCompatActivity {
 
                 }
 
+                // TODO: Move the database helper inside the try catch where it does not add an entry if an exception is thrown, but does if it is one is not thrown.
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(Job_Entry.this);
                 boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
