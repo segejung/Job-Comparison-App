@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class Update_Current_Job extends AppCompatActivity {
@@ -58,7 +59,10 @@ public class Update_Current_Job extends AppCompatActivity {
                             Integer.parseInt(annualBonusEntryField.getText().toString()),
                             Integer.parseInt(retirementBenefitsEntryField.getText().toString()),
                             Integer.parseInt(relocationStipendEntryField.getText().toString()),
-                            Integer.parseInt(trainingFundEntryField.getText().toString()));
+                            Integer.parseInt(trainingFundEntryField.getText().toString()),
+                            true); // set last one to true because it is automatically set
+
+                    // TODO: Update the database to turn the prior current job to false and leave this as true
 
                     //saveCurrentJobEntry();
                     Toast.makeText(Update_Current_Job.this,
