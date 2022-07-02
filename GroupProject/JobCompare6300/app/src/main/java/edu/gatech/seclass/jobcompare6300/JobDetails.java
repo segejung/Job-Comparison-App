@@ -16,7 +16,8 @@ public class JobDetails {
 
     private boolean isCurrentJob = false;
 
-    //Constructors
+
+//Constructors
 
     public JobDetails(){
         // Empty constructor
@@ -24,7 +25,7 @@ public class JobDetails {
 
     public JobDetails(String title, String company, String location, int costOfLiving,
                       int yearlySalary, int yearlyBonus, int retirementBenefits,
-                      int relocationStipend, int trainingAndDevelopmentFund) {
+                      int relocationStipend, int trainingAndDevelopmentFund, boolean isCurrentJob) {
         this.title = title;
         this.company = company;
         this.location = location;
@@ -108,6 +109,14 @@ public class JobDetails {
         this.trainingAndDevelopmentFund = trainingAndDevelopmentFund;
     }
 
+    public boolean isCurrentJob() {
+        return isCurrentJob;
+    }
+
+    public void setCurrentJob(boolean currentJob) {
+        isCurrentJob = currentJob;
+    }
+
     @Override
     public String toString() {
         return "JobDetails{" +
@@ -120,6 +129,7 @@ public class JobDetails {
                 ", retirementBenefits=" + retirementBenefits +
                 ", relocationAmount=" + relocationStipend +
                 ", trainingFund=" + trainingAndDevelopmentFund +
+                ", isCurrentJob=" + isCurrentJob +
                 '}';
     }
 
