@@ -34,8 +34,8 @@ JUnit is used to automate the functional testing for test cases that are applica
 
 Test case ID | Purpose | Steps | Expected result | Actual result | Pass/Fail
 :---: | :---: | :---: | :---: | :---: | :---: |
-U1.1 | User can enter the current job | Fill out the job details and click Save | currentJob is updated in JobHandler and saved in the SQLite database | - | -
-U1.2 | User can cancel entering the current job | Fill out the job details and click Cancel | if currentJob is null, it is not created and saved in the database | - | -
+U1.1 | User can enter the current job | Fill out the job details and click Save | currentJob is updated in JobHandler and saved in the SQLite database | As expected | Pass
+U1.2 | User can cancel entering the current job | Fill out the job details and click Cancel | if currentJob is null, it is not created and saved in the database | As expected | Pass
 U1.3 | City field in the job entry is valid (letters only) | Enter a city containing a number (e.g. "29 palms") | Error is thrown | - | -
 U1.4 | State field in the job entry is valid (two letters) | Enter an invalid state (e.g. "NA") in the field | Error is thrown | - | -
 U1.5 | Cost Of Living index in the job entry is between 1-500 | Enter the number 700 in the field | Error is thrown | - | -
@@ -46,7 +46,7 @@ U2.2 | User can compare the offer with the current job | Enter the current job d
 U2.3 | User cannot compare the offer with the current job that is not entered | Enter the job offer details only (no current job) and then invoke compareWithCurrent() | Error is thrown | - | -
 U3.1 | A list of jobs is displayed for comparison | Enter the current job details and enter two job offer details, and then click Compare Jobs, invoking compareJobOffers() | jobs List in JobComparer contains the correct three JobRankDetails and a list shows each as Title and Company | - | -
 U3.2 | The job score is correctly computed with default settings | Enter the current job details only with: AYS (100000 where COL is 100 and YS is 100000), AYB (10000), RBP (50), RS (1000), TDF (1000). Invoke computeJobScore() from JobScorer | 23142.86 | - | -
-U3.3 | The job score is correctly computed with custom settings | Enter the current job details only with: AYS (100000 where COL is 100 and YS is 100000), AYB (10000), RBP (50), RS (1000), TDF (1000). Adjust settings: YS (2), YB (1), RBP (1), RS (2), TDF (2). Invoke computeJobScore() from JobScorer | 37714.29 | - | -
+U3.3 | The job score is correctly computed with custom settings | Enter the current job details only with: AYS (100000 where COL is 100 and YS is 100000), AYB (10000), RBP (50), RS (1000), TDF (1000). Adjust settings: YS (2), YB (1), RBP (1), RS (2), TDF (2). Invoke computeJobScore() from JobScorer | 37714.29 | 0 | Fail
 I1.1 | Saving the current job returns to the main menu | Enter the current job details and click Save | The Main Menu activity is displayed | - | -
 I1.2 | Canceling the current job entry returns to the main menu | Enter the current job details and click Cancel | The Main Menu activity is displayed | - | -
 I2.1 | The list of jobs in comparison containing different factors is correctly ranked | Set weights to (3,1,3,2,2). Enter the current job details (100000,10000,50,1000,1000). Enter offer 1 details (120000, 5000, 40, 1000, 5000). Enter offer 2 details (120000, 20000, 35, 3200, 4000). | Display in this order: Offer 1, Offer 2, Current job | - | -
