@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         compareJobsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openJobCompareActivity();
+                openAllJobsDisplayActivity();
             }
         });
     }
@@ -64,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openJobCompareActivity() {
-        Intent intent = new Intent(this,Job_Compare.class);
+    public void openAllJobsDisplayActivity() {
+        Intent intent = new Intent(this,All_Jobs_Display.class);
         startActivity(intent);
     }
 
