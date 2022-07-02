@@ -36,7 +36,7 @@ public class All_Jobs_Display extends AppCompatActivity {
 
 
 
-        compareSelectedBtn = findViewById(R.id.compareJobsButtonId);
+        compareSelectedBtn = findViewById(R.id.compareInitiateBtn);
         compareSelectedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
