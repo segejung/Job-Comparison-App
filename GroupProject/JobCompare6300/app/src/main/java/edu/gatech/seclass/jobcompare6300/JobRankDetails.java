@@ -40,4 +40,28 @@ public class JobRankDetails extends JobDetails {
         return AYS * (salaryWeight/7) + AYB * (bonusWeight/7) + (RBP * AYS / 100) * (retirementWeight/7) +
                 RS * (relocationWeight/7) + TDF * (trainingWeight/7);
     }
+
+    public double getJobScore() {
+        return this.jobScore;
+    }
+
+    public double getSalaryWeight() { return this.salaryWeight; }
+
+    public double getBonusWeight() { return this.bonusWeight; }
+
+    public double getRetirementWeight() { return this.retirementWeight; }
+
+    public double getRelocationWeight() { return this.relocationWeight; }
+
+    public double getTrainingWeight() { return this.trainingWeight; }
+
+    public int getAYS() { return this.AYS; }
+
+    public int getAYB() { return this.AYB; }
+
+    public int getRBP() { return this.RBP; }
+
+    public int getRS() { return this.RS; }
+
+    public int getTDF() { return this.TDF; }
 }
