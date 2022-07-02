@@ -31,7 +31,14 @@ public class MainActivity extends AppCompatActivity {
                 openJobEntryActivity();
             }
         });
+
         updateCurrentJobBtn = (Button)findViewById(R.id.currentJobButtonId);
+        updateCurrentJobBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUpdateCurrentJobActivity();
+            }
+        });
 
 
         adjustSettingsBtn = (Button)findViewById(R.id.settingsButtonId);
@@ -67,8 +74,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
         // setContentView(R.layout.activity_main);
-        setContentView(R.layout.activity_job);
+        setContentView(R.layout.activity_settings);
 
+    }
+
+    public void openUpdateCurrentJobActivity() {
+        Intent intent = new Intent(this,Update_Current_Job.class);
+        startActivity(intent);
+
+        setContentView(R.layout.activity_update__current__job);
     }
 
 
