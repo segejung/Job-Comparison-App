@@ -30,7 +30,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         // Creates the Table
         String createDBTableStatement =
-                "CREATE TABLE " + JOB_OFFER_TABLE + " (" + COLUMN_TITLE + " TEXT PRIMARY KEY AUTOINCREMENT, " +
+                "CREATE TABLE " + JOB_OFFER_TABLE + " (" + COLUMN_TITLE + " TEXT PRIMARY KEY, " +
                         COLUMN_COMPANY + " TEXT, " + COLUMN_LOCATION + " TEXT, " +
                         COLUMN_COST_OF_LIVING + " INTEGER, " + COLUMN_SALARY + " INTEGER, " + COLUMN_BONUS + " INTEGER, " +
                         COLUMN_RETIREMENT_BENEFITS + " INTEGER, " + COLUMN_RELOCATION_AMOUNT + " INTEGER, " +
@@ -63,7 +63,15 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         cv.put(COLUMN_RELOCATION_AMOUNT,jobDetails.getRelocationStipend());
         cv.put(COLUMN_TRAINING_FUND,jobDetails.getTrainingAndDevelopmentFund());
 
+        long insert = appDB.insert(JOB_OFFER_TABLE, null , cv);
 
-        return true;
+        if (insert == -1) { // Kicks bag negative if it is a bad insert
+            return false;
+        } else {
+            return true;
+        }
+
+
+
     }
 }

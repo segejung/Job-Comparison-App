@@ -53,11 +53,11 @@ public class Job_Entry extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(Job_Entry.this, "I do something", Toast.LENGTH_LONG).show();
 
+                JobDetails jobOfferDetails; // Makes it before the try catch
                 // Creating a job with the entered details
                 try { // Try catch for any input exceptions
 
-
-                    JobDetails jobOfferDetails = new JobDetails(
+                    jobOfferDetails = new JobDetails(
                             titleEntryField.getText().toString(),
                             companyEntryField.getText().toString(),
                             locationEntryField.getText().toString(),
@@ -77,10 +77,17 @@ public class Job_Entry extends AppCompatActivity {
                     Toast.makeText(Job_Entry.this,
                             "Exception caught and data not saved.",
                             Toast.LENGTH_SHORT).show();
+                    jobOfferDetails = new JobDetails("err","err","err",
+                            -1,-1,-1,-1,
+                            -1,-1);
 
                 }
 
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(Job_Entry.this);
+                boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
+
+                Toast.makeText(Job_Entry.this,
+                        "Successfully added to db?" + dbSuccess,Toast.LENGTH_SHORT).show();
 
                 // Note if toast responses are not working just clear user data and try again.
                 // Helpful link: https://www.youtube.com/watch?v=ZK3_ib-g_no&ab_channel=CodingPursuits
@@ -107,11 +114,11 @@ public class Job_Entry extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void saveToTheSQLiteDB() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-
-    }
+//    public void saveToTheSQLiteDB() {
+//        Intent intent = new Intent(this, MainActivity.class);
+//        startActivity(intent);
+//
+//    } Not used, database helper does it
 
 
 
