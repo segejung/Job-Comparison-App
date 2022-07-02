@@ -1,7 +1,9 @@
 package edu.gatech.seclass.jobcompare6300;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
@@ -19,7 +21,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     public static final String COLUMN_RELOCATION_AMOUNT = "RELOCATION_AMOUNT";
     public static final String COLUMN_TRAINING_FUND = "TRAINING_FUND";
 
-    public DataBaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public DataBaseHelper(@Nullable Context context) {
         super(context, "jobData.db", null, 1);
     }
 
@@ -42,5 +44,26 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    //Adding items to the database
+    public boolean addOne(JobDetails jobDetails) {
+
+        //Used to write to the database
+        SQLiteDatabase appDB = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_TITLE,jobDetails.getTitle());
+        cv.put(COLUMN_COMPANY,jobDetails.getCompany());
+        cv.put(COLUMN_LOCATION,jobDetails.getLocation());
+        cv.put(COLUMN_COST_OF_LIVING,jobDetails.getCostOfLiving());
+        cv.put(COLUMN_SALARY,jobDetails.getSalary());
+        cv.put(COLUMN_BONUS,jobDetails.getBonus());
+        cv.put(COLUMN_RETIREMENT_BENEFITS,jobDetails.getRetirementBenefits());
+        cv.put(COLUMN_RELOCATION_AMOUNT,jobDetails.getRelocationAmount());
+        cv.put(COLUMN_TRAINING_FUND,jobDetails.getTrainingFund());
+
+
+        return true;
     }
 }
