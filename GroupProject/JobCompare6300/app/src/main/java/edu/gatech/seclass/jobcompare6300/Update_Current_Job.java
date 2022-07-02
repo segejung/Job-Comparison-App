@@ -30,6 +30,15 @@ public class Update_Current_Job extends AppCompatActivity {
         setContentView(R.layout.activity_update__current__job);
 
         titleEntryField = findViewById(R.id.titleInputTextId);
+        companyEntryField = findViewById(R.id.companyInputTextId);
+        locationEntryField = findViewById(R.id.LocationInputTextId);
+        costOfLivingEntryField = findViewById(R.id.colInputTextId);
+        annualSalaryEntryField = findViewById(R.id.salaryInputTextId);
+        annualBonusEntryField = findViewById(R.id.bonusInputTextId);
+        retirementBenefitsEntryField = findViewById(R.id.benefitsInputTextId);
+        relocationStipendEntryField = findViewById(R.id.stipendInputTextId);
+        trainingFundEntryField = findViewById(R.id.trainingInputTextId);
+
 
         cancelCurrentJob = (Button)findViewById(R.id.cancelCurrentJobButtonId);
         cancelCurrentJob.setOnClickListener(new View.OnClickListener() {
