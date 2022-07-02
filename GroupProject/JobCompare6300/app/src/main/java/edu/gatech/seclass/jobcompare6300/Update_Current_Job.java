@@ -75,6 +75,12 @@ public class Update_Current_Job extends AppCompatActivity {
 
                     // TODO: Update the database to turn the prior current job to false and leave this as true
 
+                    DataBaseHelper dataBaseHelper = new DataBaseHelper(Update_Current_Job.this);
+                    boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
+
+                    Toast.makeText(Update_Current_Job.this,
+                            "Successfully added to db ?" + dbSuccess,Toast.LENGTH_SHORT).show();
+
                     //saveCurrentJobEntry();
                     Toast.makeText(Update_Current_Job.this,
                             "New Current Job Saved", Toast.LENGTH_SHORT).show();
@@ -86,14 +92,13 @@ public class Update_Current_Job extends AppCompatActivity {
                     Toast.makeText(Update_Current_Job.this,
                             "Exception caught and data not saved.",
                             Toast.LENGTH_SHORT).show();
-                    jobOfferDetails = new JobDetails("err","err","err",
-                            -1,-1,-1,-1,
-                            -1,-1,false);
+                    boolean dbSuccess = false;
+
+                    Toast.makeText(Update_Current_Job.this,
+                            "No successful add due to prior exception.",Toast.LENGTH_SHORT).show();
 
                 }
 
-                DataBaseHelper dataBaseHelper = new DataBaseHelper(Update_Current_Job.this);
-                boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
             }
         });
