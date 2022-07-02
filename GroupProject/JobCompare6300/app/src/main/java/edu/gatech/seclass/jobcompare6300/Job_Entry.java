@@ -49,33 +49,37 @@ public class Job_Entry extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Job_Entry.this, "I do something", Toast.LENGTH_LONG).show();
+                //Toast.makeText(Job_Entry.this, "I do something", Toast.LENGTH_LONG).show();
+
+
                 // Creating a job with the entered details
 
-//                try { // Try catch for any input exceptions
-//
-//                    JobDetails jobOfferDetails = new JobDetails(
-//                            titleEntryField.getText().toString(),
-//                            companyEntryField.getText().toString(),
-//                            locationEntryField.getText().toString(),
-//                            Integer.parseInt(costOfLivingEntryField.getText().toString()),
-//                            Integer.parseInt(annualSalaryEntryField.getText().toString()),
-//                            Integer.parseInt(annualBonusEntryField.getText().toString()),
-//                            Integer.parseInt(retirementBenefitsEntryField.getText().toString()),
-//                            Integer.parseInt(relocationStipendEntryField.getText().toString()),
-//                            Integer.parseInt(trainingFundEntryField.getText().toString()));
-//
-//                    //saveToTheSQLiteDB();
-//                    Toast.makeText(Job_Entry.this,
-//                            "Job Saved", Toast.LENGTH_SHORT).show();
-//
-//                } catch (Exception e) {
-//
-//                    Toast.makeText(Job_Entry.this,
-//                            "Exception caught and data not saved.",
-//                            Toast.LENGTH_SHORT).show();
-//
-//                }
+                try { // Try catch for any input exceptions
+
+                    JobDetails jobOfferDetails = new JobDetails(
+                            titleEntryField.getText().toString(),
+                            companyEntryField.getText().toString(),
+                            locationEntryField.getText().toString(),
+                            Integer.parseInt(costOfLivingEntryField.getText().toString()),
+                            Integer.parseInt(annualSalaryEntryField.getText().toString()),
+                            Integer.parseInt(annualBonusEntryField.getText().toString()),
+                            Integer.parseInt(retirementBenefitsEntryField.getText().toString()),
+                            Integer.parseInt(relocationStipendEntryField.getText().toString()),
+                            Integer.parseInt(trainingFundEntryField.getText().toString()));
+
+                    //saveToTheSQLiteDB();
+                    Toast.makeText(Job_Entry.this,
+                            "Job Saved", Toast.LENGTH_SHORT).show();
+
+                } catch (Exception e) {
+
+                    Toast.makeText(Job_Entry.this,
+                            "Exception caught and data not saved.",
+                            Toast.LENGTH_SHORT).show();
+
+                }
+
+                // Note if toast responses are not working just clear user data and try again.
 
 
             }
