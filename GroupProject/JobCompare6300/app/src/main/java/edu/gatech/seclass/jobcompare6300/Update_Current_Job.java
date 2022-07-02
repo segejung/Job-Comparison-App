@@ -104,7 +104,7 @@ public class Update_Current_Job extends AppCompatActivity {
 
     }
 
-    public void saveCurrentJobEntry() {
+    public void saveCurrentJobEntry() { // This is done in the onClick method
 
 
     }
