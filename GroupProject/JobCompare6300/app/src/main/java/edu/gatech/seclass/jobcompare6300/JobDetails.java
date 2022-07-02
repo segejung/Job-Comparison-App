@@ -1,32 +1,39 @@
 package edu.gatech.seclass.jobcompare6300;
 
+import android.util.Pair;
+
 public class JobDetails {
 
     private String title;
     private String company;
     private String location;
     private int costOfLiving;
-    private int salary;
-    private int bonus;
+    private int yearlySalary;
+    private int yearlyBonus;
     private int retirementBenefits;
-    private int relocationAmount;
-    private int trainingFund;
+    private int relocationStipend;
+    private int trainingAndDevelopmentFund;
+
+    private boolean isCurrentJob = false;
 
     //Constructors
 
-    public JobDetails() {
+    public JobDetails(){
+        // Empty constructor
     }
 
-    public JobDetails(String title, String company, String location, int costOfLiving, int salary, int bonus, int retirementBenefits, int relocationAmount, int trainingFund) {
+    public JobDetails(String title, String company, String location, int costOfLiving,
+                      int yearlySalary, int yearlyBonus, int retirementBenefits,
+                      int relocationStipend, int trainingAndDevelopmentFund) {
         this.title = title;
         this.company = company;
         this.location = location;
         this.costOfLiving = costOfLiving;
-        this.salary = salary;
-        this.bonus = bonus;
+        this.yearlySalary = yearlySalary;
+        this.yearlyBonus = yearlyBonus;
         this.retirementBenefits = retirementBenefits;
-        this.relocationAmount = relocationAmount;
-        this.trainingFund = trainingFund;
+        this.relocationStipend = relocationStipend;
+        this.trainingAndDevelopmentFund = trainingAndDevelopmentFund;
     }
 
     public String getTitle() {
@@ -62,19 +69,19 @@ public class JobDetails {
     }
 
     public int getSalary() {
-        return salary;
+        return yearlySalary;
     }
 
     public void setSalary(int salary) {
-        this.salary = salary;
+        this.yearlySalary = salary;
     }
 
     public int getBonus() {
-        return bonus;
+        return yearlyBonus;
     }
 
     public void setBonus(int bonus) {
-        this.bonus = bonus;
+        this.yearlyBonus = bonus;
     }
 
     public int getRetirementBenefits() {
@@ -85,20 +92,20 @@ public class JobDetails {
         this.retirementBenefits = retirementBenefits;
     }
 
-    public int getRelocationAmount() {
-        return relocationAmount;
+    public int getRelocationStipend() {
+        return relocationStipend;
     }
 
-    public void setRelocationAmount(int relocationAmount) {
-        this.relocationAmount = relocationAmount;
+    public void setRelocationStipend(int relocationStipend) {
+        this.relocationStipend = relocationStipend;
     }
 
-    public int getTrainingFund() {
-        return trainingFund;
+    public int getTrainingAndDevelopmentFund() {
+        return trainingAndDevelopmentFund;
     }
 
-    public void setTrainingFund(int trainingFund) {
-        this.trainingFund = trainingFund;
+    public void setTrainingAndDevelopmentFund(int trainingAndDevelopmentFund) {
+        this.trainingAndDevelopmentFund = trainingAndDevelopmentFund;
     }
 
     @Override
@@ -108,11 +115,13 @@ public class JobDetails {
                 ", company='" + company + '\'' +
                 ", location='" + location + '\'' +
                 ", costOfLiving=" + costOfLiving +
-                ", salary=" + salary +
-                ", bonus=" + bonus +
+                ", salary=" + yearlySalary +
+                ", bonus=" + yearlyBonus +
                 ", retirementBenefits=" + retirementBenefits +
-                ", relocationAmount=" + relocationAmount +
-                ", trainingFund=" + trainingFund +
+                ", relocationAmount=" + relocationStipend +
+                ", trainingFund=" + trainingAndDevelopmentFund +
                 '}';
     }
+
+        
 }

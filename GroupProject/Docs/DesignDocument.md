@@ -1,24 +1,25 @@
-# Design Document
+﻿# Design Document
 
-*This is the template for your design document. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
-
-**Author**: \<person or team name\>
+**Author**: Team 118
 
 ## 1 Design Considerations
 
-*The subsections below describe the issues that need to be addressed or resolved prior to or while completing the design, as well as issues that may influence the design process.*
-
 ### 1.1 Assumptions
+
+
 
 *Describe any assumption, background, or dependencies of the software, its use, the operational environment, or significant project issues.*
 
 ### 1.2 Constraints
 
-*Describe any constraints on the system that have a significant impact on the design of the system.*
+- Platform - The system is limited in the platforms it can be on. The software will be developed in Android Studio, and be meant for android applicable devices.
+- User - The user can only have one current job, reflecting the real world scenario. 
+- Features - The application, as per the design, only has 4 features (edit or enter current job, enter job offers, change comparison settings, compare job offers).
+
 
 ### 1.3 System Environment
 
-*Describe the hardware and software that the system must operate in and interact with.*
+The system has to be run on hardware that runs on the Android OS. Specifically, the minimum API level is Android 11.0.
 
 ## 2 Architectural Design
 

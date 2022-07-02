@@ -60,8 +60,8 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         cv.put(COLUMN_SALARY,jobDetails.getSalary());
         cv.put(COLUMN_BONUS,jobDetails.getBonus());
         cv.put(COLUMN_RETIREMENT_BENEFITS,jobDetails.getRetirementBenefits());
-        cv.put(COLUMN_RELOCATION_AMOUNT,jobDetails.getRelocationAmount());
-        cv.put(COLUMN_TRAINING_FUND,jobDetails.getTrainingFund());
+        cv.put(COLUMN_RELOCATION_AMOUNT,jobDetails.getRelocationStipend());
+        cv.put(COLUMN_TRAINING_FUND,jobDetails.getTrainingAndDevelopmentFund());
 
 
         return true;
