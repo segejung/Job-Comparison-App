@@ -14,5 +14,7 @@
     <string name="Job2Selection">Job 2 Selection</string>
     <string name="CompareJobs">Compare Jobs</string>
     <string name="Cancel">Cancel</string>
+    <string name="CurrentJob">Current Job ?</string>
+    <string name="SaveCurrentJobLabel">Save</string>
 
 </resources>
