@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:id="@+id/VerticalLayoutId"
-        android:layout_width="421dp"
+        android:layout_width="0dp"
         android:layout_height="38dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
@@ -46,8 +46,8 @@
 
     <LinearLayout
         android:id="@+id/VerticalLayout2Id"
-        android:layout_width="421dp"
-        android:layout_height="658dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
@@ -118,12 +118,12 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/cityTextViewId"
+                android:id="@+id/locationTextViewId"
                 android:layout_width="299dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="City:"
+                android:text="Location:"
                 android:textAlignment="center" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -133,32 +133,6 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/CityInputTextId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/stateTextViewId"
-                android:layout_width="299dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="State:"
-                android:textAlignment="center" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/stateInputTextId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -186,7 +160,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/colInputTextId"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -212,7 +187,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/salaryInputTextId"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -238,7 +214,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/bonusInputTextId"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -264,7 +241,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/benefitsInputTextId"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -290,7 +268,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/stipendInputTextId"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -316,7 +295,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/trainingInputTextId"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -326,7 +306,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/cancelButtonId"
+                android:id="@+id/cancelCurrentJobButtonId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -334,7 +314,7 @@
                 android:text="cancel" />
 
             <Button
-                android:id="@+id/saveButtonId"
+                android:id="@+id/saveCurrentJobButtonId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
