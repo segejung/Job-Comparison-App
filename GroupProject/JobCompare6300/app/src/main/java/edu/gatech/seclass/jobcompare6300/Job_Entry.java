@@ -10,6 +10,7 @@ import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 public class Job_Entry extends AppCompatActivity {
@@ -26,6 +27,7 @@ public class Job_Entry extends AppCompatActivity {
     private EditText retirementBenefitsEntryField;
     private EditText relocationStipendEntryField;
     private EditText trainingFundEntryField;
+    private Switch switchForCurrentJobIndicator;
 
 
     @Override
@@ -45,6 +47,7 @@ public class Job_Entry extends AppCompatActivity {
         retirementBenefitsEntryField = findViewById(R.id.RetirementBenefitsEntryField);
         relocationStipendEntryField = findViewById(R.id.RelocationStipendEntryField);
         trainingFundEntryField = findViewById(R.id.TrainingFundEntryField);
+        switchForCurrentJobIndicator = findViewById(R.id.currentJobSwitch);
 
 
         saveBtn = findViewById(R.id.saveJobEntryBtn);
@@ -66,7 +69,9 @@ public class Job_Entry extends AppCompatActivity {
                             Integer.parseInt(annualBonusEntryField.getText().toString()),
                             Integer.parseInt(retirementBenefitsEntryField.getText().toString()),
                             Integer.parseInt(relocationStipendEntryField.getText().toString()),
-                            Integer.parseInt(trainingFundEntryField.getText().toString()));
+                            Integer.parseInt(trainingFundEntryField.getText().toString()),
+                            switchForCurrentJobIndicator.isChecked());
+
 
                     //saveToTheSQLiteDB();
                     Toast.makeText(Job_Entry.this,
@@ -79,7 +84,7 @@ public class Job_Entry extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     jobOfferDetails = new JobDetails("err","err","err",
                             -1,-1,-1,-1,
-                            -1,-1);
+                            -1,-1,false);
 
                 }
 
@@ -87,7 +92,7 @@ public class Job_Entry extends AppCompatActivity {
                 boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
                 Toast.makeText(Job_Entry.this,
-                        "Successfully added to db?" + dbSuccess,Toast.LENGTH_SHORT).show();
+                        "Successfully added to db ?" + dbSuccess,Toast.LENGTH_SHORT).show();
 
                 // Note if toast responses are not working just clear user data and try again.
                 // Helpful link: https://www.youtube.com/watch?v=ZK3_ib-g_no&ab_channel=CodingPursuits
