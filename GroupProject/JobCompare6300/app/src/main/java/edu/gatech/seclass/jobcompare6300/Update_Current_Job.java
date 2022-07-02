@@ -79,6 +79,8 @@ public class Update_Current_Job extends AppCompatActivity {
                     Toast.makeText(Update_Current_Job.this,
                             "New Current Job Saved", Toast.LENGTH_SHORT).show();
 
+                    // TODO: Fix bug where current job indicator doesn't carry over
+
                 } catch (Exception e) {
 
                     Toast.makeText(Update_Current_Job.this,
