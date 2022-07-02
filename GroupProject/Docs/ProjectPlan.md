@@ -1,45 +1,56 @@
-# Project Plan
+﻿# Project Plan
 
-*This is the template for your project plan. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
-
-**Author**: \<Team 118\>
+**Author**: Team 118
 
 ## 1 Introduction
 
-A job comparison application that allows you to compare the current job with any job offers.
-
+A job comparison application that allows you to catalog and compare job offers with a user's current job. These job entries are all ranked based on a number of factors including pay, benefits, etc.
 
 ## 2 Process Description
 
+### Creating the Main Menu root Page / UIs
+
+The main menu hosts the application's functionalities and is the landing page for the application. The user is brought to this activity upon start up and has the option to return at any point when accessing other functionalities or activities.
+
+This activity does not need any inputs as it is the top level of the design.
+
+The exit criteria of the activity is navigating to a different function, and as a result, a new UI. Seeing a new UI is the indication that the output of the activity was successful.
+
 ### Creating the Job Entry Page
-- We will create the 
-- *Entrance criteria (inputs needed for the activity)*
-- *Exit criteria (outputs produced by the activity and how you know it has been completed satisfactorily)*
+
+Upon selection of the Job Entry, the user will be prompted with a new job entry prompt. This prompt will contain fields for each part of a job that need to be filled in by the user. (more)
+
+The activity needs the user to input valid values for all of the required inputs for a job class. These fields are the following: Title, Company, Location (entered as city and state), Cost of living in the location, Yearly salary, Yearly bonus, Retirement benefits, Relocation stipend, and Training and development fund.
+
+The user would be given 3 options on this activity: save, cancel, and return to main menu. The activity would produce an output of a confirmation message when the process has been completed successfully and one of these options is selected. 
 
 
-### Creating the Main Menu root Page
-- *Activity name (verb or verb phrase)*
-- *Activity description (concise paragraph)*
-- *Entrance criteria (inputs needed for the activity)*
-- *Exit criteria (outputs produced by the activity and how you know it has been completed satisfactorily)*
+### Job Scorer
+
+Ranking jobs is a functionality required of the application. Job entries (entered through the aptly named job entry page) are given a score based on their qualities, or fields that they are given in order to give them a ranking. The ranking is planned to be done by the Job Scorer; a class that takes all the job offers and current jobs, and then ranks them based on the output of an equation. 
+
+Entrance criteria for this activity is having the job entry page created. This activity needs all the jobs cataloged as input parameters in order to perform the ranking
+
+Exit criteria for this activity would be the visual of the rankings of the jobs. Seeing the list of jobs ranked based on the function would be the indication that the activity performed successfully.
+
 
 ### Integrating the SQLite into the BackEnd
-- *Activity name (verb or verb phrase)*
-- *Activity description (concise paragraph)*
-- *Entrance criteria (inputs needed for the activity)*
-- *Exit criteria (outputs produced by the activity and how you know it has been completed satisfactorily)*
+
+This activity has the purpose of establishing an application where its state can persist between runs. ()
+
+Entrance criteria for this activity would be to have an application that has multiple states. This would allows for the application to start in a different state than the main menu.
+
+Exit criteria for this activity would be restarting the application and seeing the application start up into a different state than the starting one.
+
 
 ### Designing the Test Suite for Integration and Unit Tests
-- *Activity name (verb or verb phrase)*
-- *Activity description (concise paragraph)*
-- *Entrance criteria (inputs needed for the activity)*
-- *Exit criteria (outputs produced by the activity and how you know it has been completed satisfactorily)*
 
-### Designing the User Interfaces
-- *Activity name (verb or verb phrase)*
-- *Activity description (concise paragraph)*
-- *Entrance criteria (inputs needed for the activity)*
-- *Exit criteria (outputs produced by the activity and how you know it has been completed satisfactorily)*
+For the purposes of testing and validating the application, a testing suite will be implemented. (more)
+
+For the entrance criteria of this activity, the application must be able to compile and run successfully. The application must also be able to (more)
+
+The activity of the test suite should have the exit criteria of completing the tests and resulting in a successful test. 
+
 
 
 ## 3 Team
