@@ -76,7 +76,7 @@ public class Job_Entry extends AppCompatActivity {
                     boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
                     Toast.makeText(Job_Entry.this,
-                            "Successfully added to db ?" + dbSuccess,Toast.LENGTH_SHORT).show();
+                            "Successfully added to db ? " + dbSuccess,Toast.LENGTH_SHORT).show();
 
 
                     //saveToTheSQLiteDB();

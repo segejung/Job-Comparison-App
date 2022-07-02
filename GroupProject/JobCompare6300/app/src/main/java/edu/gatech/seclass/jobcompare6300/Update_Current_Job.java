@@ -79,7 +79,7 @@ public class Update_Current_Job extends AppCompatActivity {
                     boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
                     Toast.makeText(Update_Current_Job.this,
-                            "Successfully added to db ?" + dbSuccess,Toast.LENGTH_SHORT).show();
+                            "Successfully added to db ? " + dbSuccess,Toast.LENGTH_SHORT).show();
 
                     //saveCurrentJobEntry();
                     Toast.makeText(Update_Current_Job.this,
