@@ -54,12 +54,14 @@ public class Update_Current_Job extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                JobDetails jobOfferDetails = new JobDetails();
+
 
                 // Creating a job with the entered details
                 try { // Try catch for any input exceptions
 
 
-                    JobDetails jobOfferDetails = new JobDetails(
+                    jobOfferDetails = new JobDetails(
                             titleEntryField.getText().toString(),
                             companyEntryField.getText().toString(),
                             locationEntryField.getText().toString(),
@@ -82,10 +84,14 @@ public class Update_Current_Job extends AppCompatActivity {
                     Toast.makeText(Update_Current_Job.this,
                             "Exception caught and data not saved.",
                             Toast.LENGTH_SHORT).show();
+                    jobOfferDetails = new JobDetails("err","err","err",
+                            -1,-1,-1,-1,
+                            -1,-1,false);
 
                 }
 
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(Update_Current_Job.this);
+                boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
             }
         });
