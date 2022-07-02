@@ -63,13 +63,13 @@ The activity of the test suite should have the exit criteria of completing the t
 
 > Roles held by our Team members:
 - Project Manager, responsible for submitting the commit id for the teams work as well as dividing up the roles
-- UX/UI designer, responsible for designing the layouts for the application interfaces
+- UX/UI designer & FrontEnd Engineer, responsible for designing the layouts for the application interfaces
 - BackEnd Engineer, responsible for completing the SQLite integration for persistance as well architecting as any internal logic for managing data types and information
 - Software Test Engineer, responsible for designing and implementing the test suite for doing input checks, described constraints from the design requirements, and functionality testing
 
 > Table of Responsibilities:
 - Realistically given the requirements of the project and the size of our team some of our roles must overlap in order for integration, testing, and design to work together. Therefore, we each wear two hats.
-  | Daniel L.         | Sege J.         | William C.         | Nelson R.     |
-  | :---------         | :-------:         | :----------:         | ----------:    |
-  | Software Test Eng.| BackEnd Eng./   | BackEnd Eng.       | UX/UI designer|
-  | /Project Mgr.     | UX/UI designer  | /Software Test Eng.| /BackEnd Eng. |
+  | Daniel L.         | Sege J.                             | William C.         | Nelson R.     |
+  | :---------        | :-------:                          | :----------:       | ----------:    |
+  | Software Test Eng.| BackEnd Eng./                       | BackEnd Eng.       | UX/UI designer & FrontEnd Engineer|
+  | /Project Mgr.     | UX/UI designer & FrontEnd Engineer  | /Software Test Eng.| /BackEnd Eng. |
