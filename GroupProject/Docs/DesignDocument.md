@@ -6,9 +6,7 @@
 
 ### 1.1 Assumptions
 
-
-
-*Describe any assumption, background, or dependencies of the software, its use, the operational environment, or significant project issues.*
+The software is assumed to be used by employed users who mainly range between ages 18-65. Design has to be inclusive to a large age population. The software depends on users having access to an android-applicable device. The software does not depend on internet connection or cellular data. One assumption of the software is that it will have the fully functional features that are required of it. 
 
 ### 1.2 Constraints
 
