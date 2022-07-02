@@ -80,6 +80,7 @@ public class Job_Entry extends AppCompatActivity {
                 }
 
                 // Note if toast responses are not working just clear user data and try again.
+                // Helpful link: https://www.youtube.com/watch?v=ZK3_ib-g_no&ab_channel=CodingPursuits
 
 
             }
