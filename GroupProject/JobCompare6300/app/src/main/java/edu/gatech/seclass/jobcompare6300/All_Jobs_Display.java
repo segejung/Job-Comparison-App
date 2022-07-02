@@ -2,6 +2,7 @@ package edu.gatech.seclass.jobcompare6300;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -37,7 +38,18 @@ public class All_Jobs_Display extends AppCompatActivity {
 
         compareSelectedBtn = findViewById(R.id.compareJobsButtonId);
         cancelCompareBtn = findViewById(R.id.cancelBtnOnJobDisplay);
+        cancelCompareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                returnToMainMenu();
+            }
+        });
 
 
+    }
+
+    public void returnToMainMenu() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
