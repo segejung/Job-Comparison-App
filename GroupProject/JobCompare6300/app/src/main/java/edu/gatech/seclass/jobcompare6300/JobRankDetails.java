@@ -32,28 +32,47 @@ public class JobRankDetails extends JobDetails {
         this.RBP = retirementBenefits;
         this.RS = relocationStipend;
         this.TDF = trainingAndDevelopmentFund;
-
-        this.jobScore = computeJobScore();
     }
 
     private double computeJobScore() {
-        return AYS * (salaryWeight/7) + AYB * (bonusWeight/7) + (RBP * AYS / 100) * (retirementWeight/7) +
-                RS * (relocationWeight/7) + TDF * (trainingWeight/7);
+        double sumWeights = (double) (salaryWeight + bonusWeight + retirementWeight + relocationWeight + trainingWeight);
+        double AYSval = (double) AYS;
+        double AYBval = (double) AYB;
+        double RBPval = (double) RBP;
+        double RSval = (double) RS;
+        double TDFval = (double) TDF;
+
+        return AYSval * ((double) salaryWeight / sumWeights)
+                + AYBval * ((double) bonusWeight / sumWeights)
+                + (RBPval * AYSval / 100.0) * ((double) retirementWeight / sumWeights)
+                + RSval * ((double) relocationWeight / sumWeights)
+                + TDFval * ((double) trainingWeight / sumWeights);
     }
 
     public double getJobScore() {
+        this.jobScore = computeJobScore();
         return this.jobScore;
     }
 
     public double getSalaryWeight() { return this.salaryWeight; }
 
+    public void setSalaryWeight(int salaryWeight) { this.salaryWeight = salaryWeight; }
+
     public double getBonusWeight() { return this.bonusWeight; }
+
+    public void setBonusWeight(int bonusWeight) { this.bonusWeight = bonusWeight; }
 
     public double getRetirementWeight() { return this.retirementWeight; }
 
+    public void setRetirementWeight(int retirementWeight) { this.retirementWeight = retirementWeight; }
+
     public double getRelocationWeight() { return this.relocationWeight; }
 
+    public void setRelocationWeight(int relocationWeight) { this.relocationWeight = relocationWeight; }
+
     public double getTrainingWeight() { return this.trainingWeight; }
+
+    public void setTrainingWeight(int trainingWeight) { this.trainingWeight = trainingWeight; }
 
     public int getAYS() { return this.AYS; }
 

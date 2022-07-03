@@ -22,13 +22,21 @@ public class JobRankDetailsTest {
         JobRankDetails job = new JobRankDetails(title, company, location, costOfLiving, salary,
                 bonus, retirementBenefits, relocationStipend, trainingFund, false);
 
-        // int salaryWeight = 2;
-        // int bonusWeight = 1;
-        // int retirementWeight = 1;
-        // int relocationWeight = 2;
-        // int trainingWeight = 2;
+        int salaryWeight = 2;
+        int bonusWeight = 1;
+        int retirementWeight = 1;
+        int relocationWeight = 2;
+        int trainingWeight = 2;
+
+        job.setSalaryWeight(salaryWeight);
+        job.setBonusWeight(bonusWeight);
+        job.setRetirementWeight(retirementWeight);
+        job.setRelocationWeight(relocationWeight);
+        job.setTrainingWeight(trainingWeight);
 
         double delta = 0.5;
+
+        double actualScore = job.getJobScore();
 
         assertEquals(37714.29, job.getJobScore(), delta);
     }
