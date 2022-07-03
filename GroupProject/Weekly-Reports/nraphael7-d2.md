@@ -6,6 +6,8 @@ My accomplishments for this deliverable
 - Created the Job Offer Handler Class
 - Created the Job Handler Class
 - Contributed to the Design Document Markdown File (Sections 2,3, and 4)
+  - Created the Component Diagram
+  - Updated the UML Diagram to include the UIs
 - Collaborated on the Project Plan
 - Created the UI for the Job Entry Layout, Job List Display Layout
 - Linked the Main Menu UI to the Job Entry, Job Compare, and Settings UI

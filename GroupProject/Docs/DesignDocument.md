@@ -31,7 +31,6 @@ The database component as well as its dependencies are shown, where the relation
 The Job Compare UI can not exist without the All Job Display, which is tied back to the Main Menu UI. This is also tied to the database, since the entries being compared will orignate from there first after being sorted by the job score and parsed for just the title and company columns.
 
 
-
 ![](../images/Team118_JobCompareComponentDiagram.png)
 
 ### 2.2 Deployment Diagram
