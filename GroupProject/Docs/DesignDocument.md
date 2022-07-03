@@ -21,15 +21,13 @@ The system has to be run on hardware that runs on the Android OS. Specifically, 
 
 ## 2 Architectural Design
 
-*The architecture provides the high-level design view of a system and provides a basis for more detailed design work. These subsections describe the top-level components of the system you are building and their relationships.*
-
 ### 2.1 Component Diagram
 
 *This section should provide and describe a diagram that shows the various components and how they are connected. This diagram shows the logical/functional components of the system, where each component represents a cluster of related functionality. In the case of simple systems, where there is a single component, this diagram may be unnecessary; in these cases, simply state so and concisely state why.*
 
 ### 2.2 Deployment Diagram
 
-*This section should describe how the different components will be deployed on actual hardware devices. Similar to the previous subsection, this diagram may be unnecessary for simple systems; in these cases, simply state so and concisely state why.*
+There are two different components at play here for this application. There will be the SQLiteDatabase as well as the application itself. The database is deployed directly onto the device hosting the app, since it is built into the android backend. There is no need for an elaborate diagram since it is a fully contained system. We are not running a multi-device distributed system.
 
 ## 3 Low-Level Design
 
@@ -37,11 +35,13 @@ The system has to be run on hardware that runs on the Android OS. Specifically, 
 
 ### 3.1 Class Diagram
 
-*In the case of an OO design, the internal structure of a software component would typically be expressed as a UML class diagram that represents the static class structure for the component and their relationships.*
+Here is an updated class diagram of our application, where the user interfaces have been realized. It is still a work in progress since some attributes within the prior design have been realized in another way, while other relationships and methods are being fine tuned.
+
+![](../images/teamDesign_d2.png)
 
 ### 3.2 Other Diagrams
 
-*<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
+A state machine can be designed for deliverable 3 when all of our application features and full testing procedures are ironed out.
 
 ## 4 User Interface Design
 
