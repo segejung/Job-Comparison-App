@@ -23,7 +23,16 @@ The system has to be run on hardware that runs on the Android OS. Specifically, 
 
 ### 2.1 Component Diagram
 
-*This section should provide and describe a diagram that shows the various components and how they are connected. This diagram shows the logical/functional components of the system, where each component represents a cluster of related functionality. In the case of simple systems, where there is a single component, this diagram may be unnecessary; in these cases, simply state so and concisely state why.*
+
+Within this component diagram you can see the application interfaces, the database, as well as the user present. The pipes are substituted for the regular component connections due to the application used to create it, but it represents the same relationship where the child item can not exist without the parent (i.e. these other interfaces can not exist without the existence of the main interface). These lines also detail the relationship of why that component is invoked when leaving the parent and show features that branch off as actions that can be taken as a final action before return or that result in a displayed view.
+
+The database component as well as its dependencies are shown, where the relationship between the Job Entry UI, Update Current Job UI, and All Job Display UI need the Database to function correctly. While they can exist without the database as a static interface, the baseline functionality will be missing due to an inability to access database entries to be displayed, updated, deleted or compared. 
+
+The Job Compare UI can not exist without the All Job Display, which is tied back to the Main Menu UI. This is also tied to the database, since the entries being compared will orignate from there first after being sorted by the job score and parsed for just the title and company columns.
+
+
+
+![](../images/Team118_JobCompareComponentDiagram.png)
 
 ### 2.2 Deployment Diagram
 
