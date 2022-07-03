@@ -38,6 +38,6 @@ public class JobRankDetailsTest {
 
         double actualScore = job.getJobScore();
 
-        assertEquals(37714.29, job.getJobScore(), delta);
+        assertEquals(33000.0, job.getJobScore(), delta);
     }
 }
