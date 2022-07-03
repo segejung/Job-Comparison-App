@@ -1,4 +1,4 @@
-- Project Plan markdown file
-- Design Document (Section 1)
-- Job Details Class
-- If time Job Ranking
+- Completed the Project Plan markdown file that was started by the group as a whole
+- Worked on section 1 of the design document file
+- Developed on backend Job Details Class 
+- Developed the Job Rank Details Class
