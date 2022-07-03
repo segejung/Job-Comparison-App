@@ -6,9 +6,7 @@
 
 ### 1.1 Assumptions
 
-
-
-*Describe any assumption, background, or dependencies of the software, its use, the operational environment, or significant project issues.*
+The software is assumed to be used by employed users who mainly range between ages 18-65. Design has to be inclusive to a large age population. The software depends on users having access to an android-applicable device. The software does not depend on internet connection or cellular data. One assumption of the software is that it will have the fully functional features that are required of it. 
 
 ### 1.2 Constraints
 
@@ -23,15 +21,21 @@ The system has to be run on hardware that runs on the Android OS. Specifically, 
 
 ## 2 Architectural Design
 
-*The architecture provides the high-level design view of a system and provides a basis for more detailed design work. These subsections describe the top-level components of the system you are building and their relationships.*
-
 ### 2.1 Component Diagram
 
-*This section should provide and describe a diagram that shows the various components and how they are connected. This diagram shows the logical/functional components of the system, where each component represents a cluster of related functionality. In the case of simple systems, where there is a single component, this diagram may be unnecessary; in these cases, simply state so and concisely state why.*
+
+Within this component diagram you can see the application interfaces, the database, as well as the user present. The pipes are substituted for the regular component connections due to the application used to create it, but it represents the same relationship where the child item can not exist without the parent (i.e. these other interfaces can not exist without the existence of the main interface). These lines also detail the relationship of why that component is invoked when leaving the parent and show features that branch off as actions that can be taken as a final action before return or that result in a displayed view.
+
+The database component as well as its dependencies are shown, where the relationship between the Job Entry UI, Update Current Job UI, and All Job Display UI need the Database to function correctly. While they can exist without the database as a static interface, the baseline functionality will be missing due to an inability to access database entries to be displayed, updated, deleted or compared. 
+
+The Job Compare UI can not exist without the All Job Display, which is tied back to the Main Menu UI. This is also tied to the database, since the entries being compared will orignate from there first after being sorted by the job score and parsed for just the title and company columns.
+
+
+![](../images/Team118_JobCompareComponentDiagram.png)
 
 ### 2.2 Deployment Diagram
 
-*This section should describe how the different components will be deployed on actual hardware devices. Similar to the previous subsection, this diagram may be unnecessary for simple systems; in these cases, simply state so and concisely state why.*
+There are two different components at play here for this application. There will be the SQLiteDatabase as well as the application itself. The database is deployed directly onto the device hosting the app, since it is built into the android backend. There is no need for an elaborate diagram since it is a fully contained system. We are not running a multi-device distributed system.
 
 ## 3 Low-Level Design
 
@@ -39,11 +43,60 @@ The system has to be run on hardware that runs on the Android OS. Specifically, 
 
 ### 3.1 Class Diagram
 
-*In the case of an OO design, the internal structure of a software component would typically be expressed as a UML class diagram that represents the static class structure for the component and their relationships.*
+Here is an updated class diagram of our application, where the user interfaces have been realized. It is still a work in progress since some attributes within the prior design have been realized in another way, while other relationships and methods are being fine tuned.
+
+![](../images/teamDesign_d2.png)
 
 ### 3.2 Other Diagrams
 
-*<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
+A state machine can be designed for deliverable 3 when all of our application features and full testing procedures are ironed out.
 
 ## 4 User Interface Design
-*For GUI-based systems, this section should provide the specific format/layout of the user interface of the system (e.g., in the form of graphical mockups).*
+
+- Here are a the images of our current application's guided user interfaces.
+
+### Main Menu
+
+- Here is the main menu UI for our application, also known as our main entry point. The user will have four options (truly only three if no job offers have been entered yet). 
+
+![](../images/Main_Menu_UI.JPG)
+
+### Update Current Job
+
+- Here is the UI for updating the user's current job. The goal is to have this automatically set the entry to the current job and release the prior current job's designation.
+
+![](../images/Update_Current_Job_UI.JPG)
+
+
+### Job Entry
+
+- Here is the UI for just entering in job offers received. Using the switch at the bottom the user can designate if the job being entered will be the new current job, rather than the automatic designation presented in the Update_Current_Job UI.
+
+![](../images/Job_Entry_UI.JPG)
+
+### Adjust Settings Page
+
+- Here is the UI for adjusting the settings of the integer weights. We decided to go with a slider to constrain the types of inputs available for the user.
+
+![](../images/Adjust_Settings_UI.JPG)
+
+
+
+### All Jobs Page
+
+- Here is the All Jobs page that is present when you want to initiate a comparison, but need to look at the jobs that need to be compared.
+
+![](../images/All_Jobs_Display_unpopulated_UI.JPG)
+
+- There are two spinners present under the list view that will populate with the job titles and the id numbers once the user chooses to view all.
+
+- Here is how it looks populated.
+
+![](../images/All_Jobs_Display_populated_UI.JPG)
+
+### Job Comparison
+
+- Here is the UI for performing the job comparison. This is behind the All_Jobs_Display UI since you have to select the jobs using the spinners for it to be ported over to the comparison table.
+- The "Go Back" button provides the user a way to return to the main menu.
+
+![](../images/Job_Compare_UI.JPG)

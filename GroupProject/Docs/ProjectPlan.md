@@ -18,7 +18,7 @@ The exit criteria of the activity is navigating to a different function, and as 
 
 ### Creating the Job Entry Page
 
-Upon selection of the Job Entry, the user will be prompted with a new job entry prompt. This prompt will contain fields for each part of a job that need to be filled in by the user. (more)
+Upon selection of the Job Entry, the user will be prompted with a new job entry prompt. This prompt will contain fields for each part of a job that need to be filled in by the user.
 
 The activity needs the user to input valid values for all of the required inputs for a job class. These fields are the following: Title, Company, Location (entered as city and state), Cost of living in the location, Yearly salary, Yearly bonus, Retirement benefits, Relocation stipend, and Training and development fund.
 
@@ -34,9 +34,9 @@ Entrance criteria for this activity is having the job entry page created. This a
 Exit criteria for this activity would be the visual of the rankings of the jobs. Seeing the list of jobs ranked based on the function would be the indication that the activity performed successfully.
 
 
-### Integrating the SQLite into the BackEnd
+### Integrating the SQLite into the Backend
 
-This activity has the purpose of establishing an application where its state can persist between runs. ()
+This activity has the purpose of establishing an application where its state can persist between runs. 
 
 Entrance criteria for this activity would be to have an application that has multiple states. This would allows for the application to start in a different state than the main menu.
 
@@ -45,9 +45,9 @@ Exit criteria for this activity would be restarting the application and seeing t
 
 ### Designing the Test Suite for Integration and Unit Tests
 
-For the purposes of testing and validating the application, a testing suite will be implemented. (more)
+For the purposes of testing and validating the application, a testing suite will be implemented. This suite of tests will validate the application and its functionalities in order it determine if the presented product sufficiently meets all requirements and constraints.
 
-For the entrance criteria of this activity, the application must be able to compile and run successfully. The application must also be able to (more)
+For the entrance criteria of this activity, the application must be able to compile and run successfully.
 
 The activity of the test suite should have the exit criteria of completing the tests and resulting in a successful test. 
 
@@ -63,13 +63,13 @@ The activity of the test suite should have the exit criteria of completing the t
 
 > Roles held by our Team members:
 - Project Manager, responsible for submitting the commit id for the teams work as well as dividing up the roles
-- UX/UI designer, responsible for designing the layouts for the application interfaces
+- UX/UI designer & FrontEnd Engineer, responsible for designing the layouts for the application interfaces
 - BackEnd Engineer, responsible for completing the SQLite integration for persistance as well architecting as any internal logic for managing data types and information
 - Software Test Engineer, responsible for designing and implementing the test suite for doing input checks, described constraints from the design requirements, and functionality testing
 
 > Table of Responsibilities:
 - Realistically given the requirements of the project and the size of our team some of our roles must overlap in order for integration, testing, and design to work together. Therefore, we each wear two hats.
-  | Daniel L.         | Sege J.         | William C.         | Nelson R.     |
-  | :---------         | :-------:         | :----------:         | ----------:    |
-  | Software Test Eng.| BackEnd Eng./   | BackEnd Eng.       | UX/UI designer|
-  | /Project Mgr.     | UX/UI designer  | /Software Test Eng.| /BackEnd Eng. |
+  | Daniel L.         | Sege J.                             | William C.         | Nelson R.     |
+  | :---------        | :-------:                          | :----------:       | ----------:    |
+  | Software Test Eng.| BackEnd Eng./                       | BackEnd Eng.       | UX/UI designer & FrontEnd Engineer|
+  | /Project Mgr.     | UX/UI designer & FrontEnd Engineer  | /Software Test Eng.| /BackEnd Eng. |
