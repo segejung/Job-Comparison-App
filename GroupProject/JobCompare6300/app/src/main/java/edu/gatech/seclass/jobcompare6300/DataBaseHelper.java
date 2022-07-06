@@ -46,11 +46,15 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
                         COLUMN_RETIREMENT_BENEFITS + " INTEGER, " + COLUMN_RELOCATION_AMOUNT + " INTEGER, " +
                         COLUMN_TRAINING_FUND + " INTEGER, " + COLUMN_IS_CURRENT_JOB + " BOOLEAN, " + COLUMN_JOB_SCORE + " INTEGER)";
 
-//        String createRankTableStatement =
-//                " CREATE TABLE " + JOB
 
+        // TODO: Create a SQL Table Statement for the weights
+//        String createDBWeightTableStatement = "CREATE TABLE JOB_WEIGHT_TABLE ";
+//
+////        String createRankTableStatement =
+////                " CREATE TABLE " + JOB
+//
         db.execSQL(createDBTableStatement);
-
+//
     }
 
     // Version Update
@@ -58,6 +62,8 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    // TODO: Create a method that performs the
 
     //Adding items to the database
     public boolean addOne(JobDetails jobDetails) {
@@ -80,7 +86,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
         long insert = appDB.insert(JOB_OFFER_TABLE, null , cv);
 
-        if (insert == -1) { // Kicks bag negative if it is a bad insert
+        if (insert == -1) { // Kicks back negative if it is a bad insert
             return false;
         } else {
             return true;
@@ -89,6 +95,20 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
 
     }
+
+
+    // TODO: Complete the job weight retrieval function from the SQL table
+
+//    public double[] getJobWeights() {
+//
+//        double[] weights = new double[5];
+//
+//
+//
+//
+//
+//        return weights;
+//    }
 
     public List<JobDetails> getOffers() {
         List<JobDetails> returnedJobOffers = new ArrayList<>();
