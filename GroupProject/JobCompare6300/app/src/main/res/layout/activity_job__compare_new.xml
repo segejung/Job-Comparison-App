@@ -107,6 +107,7 @@
                 android:id="@+id/job1titleColId"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -114,6 +115,7 @@
                 android:id="@+id/job2titleColId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -136,6 +138,7 @@
                 android:id="@+id/job1companyColId"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -143,6 +146,7 @@
                 android:id="@+id/job2companyColId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -165,6 +169,7 @@
                 android:id="@+id/job1locationColId"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -172,6 +177,7 @@
                 android:id="@+id/job2locationColId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -194,6 +200,7 @@
                 android:id="@+id/job1aysColId"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -201,6 +208,7 @@
                 android:id="@+id/job2aysColId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -223,6 +231,7 @@
                 android:id="@+id/job1aybColId"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -230,6 +239,7 @@
                 android:id="@+id/job2aybColId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -252,6 +262,7 @@
                 android:id="@+id/job1benefitsColId"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -259,6 +270,7 @@
                 android:id="@+id/job2benefitsColId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -281,6 +293,7 @@
                 android:id="@+id/job1stipendColId"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -288,6 +301,7 @@
                 android:id="@+id/job2stipendColId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -310,6 +324,7 @@
                 android:id="@+id/job1tdfColId"
                 android:layout_width="160dp"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
@@ -317,6 +332,7 @@
                 android:id="@+id/job2tdfColId"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:gravity="center_horizontal|center_vertical"
                 android:textColor="#000000" />
 
