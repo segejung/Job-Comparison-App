@@ -16,7 +16,7 @@ public class Job_Compare extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_job__compare);
+        setContentView(R.layout.activity_job__compare_new);
 
         goBackBtn = (Button)findViewById(R.id.goBackButton);
         goBackBtn.setOnClickListener(new View.OnClickListener() {
