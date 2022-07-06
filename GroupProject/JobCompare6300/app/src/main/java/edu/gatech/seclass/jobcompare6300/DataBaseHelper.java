@@ -30,6 +30,17 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     public static final String COLUMN_TRAINING_FUND = "TRAINING_FUND";
     public static final String COLUMN_IS_CURRENT_JOB = "COLUMN_IS_CURRENT_JOB";
     public static final String COLUMN_JOB_SCORE = "COLUMN_JOB_SCORE";
+    public static final String JOB_WEIGHT_TABLE = "JOB_WEIGHT_TABLE";
+    public static final String COLUMN_AYS = "COLUMN_AYS";
+    public static final String COLUMN_AYB = "COLUMN_AYB";
+    public static final String COLUMN_RBP = "COLUMN_RBP";
+    public static final String COLUMN_RS = "COLUMN_RS";
+    public static final String COLUMN_TDF = "COLUMN_TDF";
+    public static final String COLUMN_AYS_VAL = "COLUMN_AYS_VAL";
+    public static final String COLUMN_AYB_VAL = "COLUMN_AYB_VAL";
+    public static final String COLUMN_RB_VAL = "COLUMN_RB_VAL";
+    public static final String COLUMN_RA_VAL = "COLUMN_RA_VAL";
+    public static final String COLUMN_TDF_VAL = "COLUMN_TDF_VAL";
 
     public DataBaseHelper(@Nullable Context context) {
         super(context, "jobData.db", null, 1);
@@ -48,12 +59,18 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
 
         // TODO: Create a SQL Table Statement for the weights
-//        String createDBWeightTableStatement = "CREATE TABLE JOB_WEIGHT_TABLE ";
-//
-////        String createRankTableStatement =
-////                " CREATE TABLE " + JOB
+        String createDBWeightTableStatement = "CREATE TABLE " + JOB_WEIGHT_TABLE + " (" + COLUMN_AYS +
+                " FLOAT, " + COLUMN_AYB + " FLOAT, " + COLUMN_RBP + " FLOAT, " + COLUMN_RS + " FLOAT, " +
+                COLUMN_TDF + " FLOAT)";
+
+        String createRankTableStatement =
+                "CREATE TABLE JOB_CALC_WEIGHTS_TABLE (JOB_ID INTEGER FOREIGN KEY, " + COLUMN_AYS_VAL +
+                        " INTEGER, " + COLUMN_AYB_VAL + " INTEGER, " + COLUMN_RB_VAL +
+                        " INTEGER, " + COLUMN_RA_VAL + " INTEGER, " + COLUMN_TDF_VAL + " INTEGER)";
 //
         db.execSQL(createDBTableStatement);
+        db.execSQL(createDBWeightTableStatement);
+        db.execSQL(createRankTableStatement);
 //
     }
 
@@ -92,23 +109,62 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
             return true;
         }
 
+    }
+
+    //TODO: Complete internal updating the weights via the database.
+
+    public boolean changeWeights(int AYS, int AYB, int RB, int RA, int TDF) {
+
+        SQLiteDatabase appDB = this.getWritableDatabase();
 
 
+        ContentValues weights_cv = new ContentValues();
+        weights_cv.put(COLUMN_AYS,AYS);
+        weights_cv.put(COLUMN_AYB,AYB);
+        weights_cv.put(COLUMN_RETIREMENT_BENEFITS,RB);
+        weights_cv.put(COLUMN_RELOCATION_AMOUNT,RA);
+        weights_cv.put(COLUMN_TDF,TDF);
+
+        long insert = appDB.insert(JOB_WEIGHT_TABLE, null , weights_cv);
+
+        if (insert == -1) { // Kicks back negative if it is a bad insert
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
     // TODO: Complete the job weight retrieval function from the SQL table
 
-//    public double[] getJobWeights() {
-//
-//        double[] weights = new double[5];
-//
-//
-//
-//
-//
-//        return weights;
-//    }
+    public double[] getJobWeights() {
+
+        double[] weights = new double[5];
+
+        String queryRequestStr = "SELECT * FROM " + JOB_WEIGHT_TABLE;
+        SQLiteDatabase appDB = this.getReadableDatabase();
+
+        Cursor weightCursor = appDB.rawQuery(queryRequestStr,null);
+
+
+        if(weightCursor.moveToFirst()) {
+
+            do {
+                Integer AYS_weight = weightCursor.getInt(1);
+                Integer AYB_weight = weightCursor.getInt(2);
+                Integer RB_weight = weightCursor.getInt(3);
+                Integer RA_weight = weightCursor.getInt(4);
+                Integer TDF_weight = weightCursor.getInt(5);
+            } while (weightCursor.moveToNext());
+
+        } else {
+
+        }
+        weightCursor.close();
+        appDB.close();
+
+        return weights;
+    }
 
     public List<JobDetails> getOffers() {
         List<JobDetails> returnedJobOffers = new ArrayList<>();
