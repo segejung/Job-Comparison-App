@@ -83,4 +83,22 @@ public class JobRankDetails extends JobDetails {
     public int getRS() { return this.RS; }
 
     public int getTDF() { return this.TDF; }
+
+    @Override
+    public String toString() {
+        return "JobRankDetails{" +
+                "jobScore=" + jobScore +
+                ", salaryWeight=" + salaryWeight +
+                ", bonusWeight=" + bonusWeight +
+                ", retirementWeight=" + retirementWeight +
+                ", relocationWeight=" + relocationWeight +
+                ", trainingWeight=" + trainingWeight +
+                ", currentJob=" + currentJob +
+                ", AYS=" + AYS +
+                ", AYB=" + AYB +
+                ", RBP=" + RBP +
+                ", RS=" + RS +
+                ", TDF=" + TDF +
+                '}';
+    }
 }
