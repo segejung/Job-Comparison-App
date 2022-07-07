@@ -83,6 +83,8 @@ public class Job_Entry extends AppCompatActivity {
                     Toast.makeText(Job_Entry.this,
                             "Job Saved", Toast.LENGTH_SHORT).show();
 
+                    openMainMenu();
+
                 } catch (Exception e) {
 
                     Toast.makeText(Job_Entry.this,
