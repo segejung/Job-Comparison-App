@@ -44,9 +44,9 @@ public class All_Jobs_Display extends AppCompatActivity implements AdapterView.O
                 DataBaseHelper databaseHelper = new DataBaseHelper(All_Jobs_Display.this);
 
                 try {
-                    List<JobDetails> jobListEntries = databaseHelper.getOffers();
+                    List<JobRankDetails> jobListEntries = databaseHelper.getOffers();
 
-                    ArrayAdapter jobOfferListArrayAdapter = new ArrayAdapter<JobDetails>(All_Jobs_Display.this,
+                    ArrayAdapter jobOfferListArrayAdapter = new ArrayAdapter<JobRankDetails>(All_Jobs_Display.this,
                             android.R.layout.simple_list_item_1,jobListEntries);
                     jobListDisplay.setAdapter(jobOfferListArrayAdapter);
 
