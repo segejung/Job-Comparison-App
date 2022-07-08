@@ -243,7 +243,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     }
 
     public List<JobRankDetails> getJobDetails() {
-        List<JobRankDetails> returnedJobOjects = new ArrayList<>();
+        List<JobRankDetails> returnedJobObjects = new ArrayList<>();
 
         String queryRequestStr = "SELECT * FROM " + JOB_OFFER_TABLE;
         SQLiteDatabase appDB = this.getReadableDatabase(); // We just want to read the database here.
@@ -272,7 +272,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
                         jobCostOfLiving,jobAnnualSalary,jobAnnualBonus,jobRetirementBenefits,
                         jobRelocationStipend,jobTrainingAndDevFund,currentJobIndicator);
 
-                returnedJobOjects.add(jobObj);
+                returnedJobObjects.add(jobObj);
 
             } while (cursor.moveToNext());
         } else {
@@ -284,7 +284,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         cursor.close();
         appDB.close();
 
-        return returnedJobOjects;
+        return returnedJobObjects;
     }
 
 
