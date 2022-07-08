@@ -37,23 +37,11 @@ public class JobRankDetails extends JobDetails {
         this.TDF = trainingAndDevelopmentFund;
     }
 
-    private double computeJobScore() {
-        double sumWeights = (double) (salaryWeight + bonusWeight + retirementWeight + relocationWeight + trainingWeight);
-        double AYSval = (double) AYS;
-        double AYBval = (double) AYB;
-        double RBPval = (double) RBP;
-        double RSval = (double) RS;
-        double TDFval = (double) TDF;
-
-        return AYSval * ((double) salaryWeight / sumWeights)
-                + AYBval * ((double) bonusWeight / sumWeights)
-                + (RBPval * AYSval / 100.0) * ((double) retirementWeight / sumWeights)
-                + RSval * ((double) relocationWeight / sumWeights)
-                + TDFval * ((double) trainingWeight / sumWeights);
+    public void setJobScore(double jobScore) {
+        this.jobScore = jobScore;
     }
 
     public double getJobScore() {
-        this.jobScore = computeJobScore();
         return this.jobScore;
     }
 
