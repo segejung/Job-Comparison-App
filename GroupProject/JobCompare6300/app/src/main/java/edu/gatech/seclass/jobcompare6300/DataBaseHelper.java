@@ -162,6 +162,39 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         return weights;
     }
 
+    /* returns a new JobDetails object with its details from the matching job ID */
+    public JobDetails getJobDetailsWithId(int jobId) {
+        JobDetails matchedJob = null;
+
+        String queryRequestStr = "SELECT * FROM " + JOB_OFFER_TABLE
+                + " WHERE JOB_ID = " + String.valueOf(jobId);
+        SQLiteDatabase appDB = this.getReadableDatabase();
+
+        Cursor cursor = appDB.rawQuery(queryRequestStr, null);
+
+        if (cursor.moveToFirst()) {
+            String jobTitle = cursor.getString(1);
+            String jobCompanyName = cursor.getString(2);
+            String jobLocation = cursor.getString(3);
+            Integer jobCostOfLiving = cursor.getInt(4);
+            Integer jobAnnualSalary = cursor.getInt(5);
+            Integer jobAnnualBonus = cursor.getInt(6);
+            Integer jobRetirementBenefits = cursor.getInt(7);
+            Integer jobRelocationStipend = cursor.getInt(8);
+            Integer jobTrainingAndDevFund = cursor.getInt(9);
+            boolean currentJobIndicator = cursor.getInt(10) == 1 ? true: false;
+
+            matchedJob = new JobDetails(jobTitle,jobCompanyName,jobLocation,
+                    jobCostOfLiving,jobAnnualSalary,jobAnnualBonus,jobRetirementBenefits,
+                    jobRelocationStipend,jobTrainingAndDevFund,currentJobIndicator);
+        }
+
+        cursor.close();
+        appDB.close();
+
+        return matchedJob;
+    }
+
     public List<JobDetails> getOffers() {
         List<JobDetails> returnedJobOffers = new ArrayList<>();
 
