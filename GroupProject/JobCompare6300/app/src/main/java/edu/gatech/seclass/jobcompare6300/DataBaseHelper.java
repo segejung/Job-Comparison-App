@@ -11,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class DataBaseHelper extends  SQLiteOpenHelper{
@@ -103,7 +106,37 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 //
 //    }
 
-    // TODO: Create a method that performs the
+
+    public double computeJobScore(JobRankDetails jobToCompute) {
+        double[] jobWeights = new double[5];
+       jobWeights = this.getJobWeights();
+        double salaryWeight = jobWeights[0];
+        double bonusWeight = jobWeights[1];
+        double retirementWeight = jobWeights[2];
+        double relocationWeight= jobWeights[3];
+        double trainingWeight = jobWeights[4];
+
+
+        double sumWeights = salaryWeight + bonusWeight + retirementWeight + relocationWeight + trainingWeight;
+
+        double jobScoreCalculated = 0;
+
+            double AYSval = (double) jobToCompute.getSalary();
+            double AYBval = (double) jobToCompute.getBonus();
+            double RBPval = (double) jobToCompute.getRetirementBenefits();
+            double RSval = (double) jobToCompute.getRelocationStipend();
+            double TDFval = (double) jobToCompute.getTrainingAndDevelopmentFund();
+
+            jobScoreCalculated = AYSval * ((double) salaryWeight / sumWeights)
+                    + AYBval * ((double) bonusWeight / sumWeights)
+                    + (RBPval * AYSval / 100.0) * ((double) retirementWeight / sumWeights)
+                    + RSval * ((double) relocationWeight / sumWeights)
+                    + TDFval * ((double) trainingWeight / sumWeights);
+
+
+
+        return jobScoreCalculated;
+    }
 
     //Adding items to the database
     public boolean addOne(JobDetails jobDetails) {
@@ -185,7 +218,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     }
 
 
-    // TODO: Complete the job weight retrieval function from the SQL table
+
 
     public double[] getJobWeights() {
 
@@ -205,6 +238,12 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
                 Float RB_weight = weightCursor.getFloat(3);
                 Float RA_weight = weightCursor.getFloat(4);
                 Float TDF_weight = weightCursor.getFloat(5);
+
+                weights[0] = AYS_weight;
+                weights[1] = AYB_weight;
+                weights[2] = RB_weight;
+                weights[3] = RA_weight;
+                weights[4] = TDF_weight;
             } while (weightCursor.moveToNext());
 
         } else {
@@ -250,8 +289,8 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         return matchedJob;
     }
 
-    public List<JobDetails> getOffers() {
-        List<JobDetails> returnedJobOffers = new ArrayList<>();
+    public List<JobRankDetails> getOffers() {
+        List<JobRankDetails> returnedJobOffers = new ArrayList<>();
 
         // This code will pull data from the database
 
@@ -259,8 +298,9 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         SQLiteDatabase appDB = this.getReadableDatabase(); // We just want to read the database here.
 
         Cursor cursor = appDB.rawQuery(queryRequestStr,null);
+        double calculatedJobScore = 0.0;
 
-        // TODO: Change this so it sorts by Job Score first and then does this iteration, it may be worth placing this in the a sort function to do prior to listing
+        // TODO: Change this so it sorts by Job Score greatest to least (currently least to greatest)
 
         if(cursor.moveToFirst()) {
             // We want to iterate through the list here and create a JobDetails obj for each row
@@ -279,9 +319,11 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
                 // Omit job score (this should be hidden)
 
-                JobDetails listedJob = new JobDetails(jobTitle,jobCompanyName,jobLocation,
+                JobRankDetails listedJob = new JobRankDetails(jobTitle,jobCompanyName,jobLocation,
                         jobCostOfLiving,jobAnnualSalary,jobAnnualBonus,jobRetirementBenefits,
                         jobRelocationStipend,jobTrainingAndDevFund,currentJobIndicator);
+                calculatedJobScore = this.computeJobScore(listedJob);
+                listedJob.setJobScore(calculatedJobScore);
                 returnedJobOffers.add(listedJob);
 
             } while (cursor.moveToNext());
@@ -293,6 +335,13 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         //close db connection
         cursor.close();
         appDB.close();
+
+        //Sorting action for the list of offers
+        Collections.sort(returnedJobOffers, new Comparator<JobRankDetails>() {
+            public int compare(JobRankDetails j1, JobRankDetails j2) {
+                return Double.compare(j1.getJobScore(),j2.getJobScore());
+            }
+        });
 
         return returnedJobOffers;
     }
