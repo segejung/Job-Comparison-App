@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Pair;
 
@@ -12,9 +11,6 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.sql.Types.BOOLEAN;
-import static java.sql.Types.INTEGER;
 
 public class DataBaseHelper extends  SQLiteOpenHelper{
 
@@ -64,7 +60,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
                 COLUMN_TDF + " FLOAT)";
 
         String createRankTableStatement =
-                "CREATE TABLE JOB_CALC_WEIGHTS_TABLE (JOB_ID INTEGER FOREIGN KEY, " + COLUMN_AYS_VAL +
+                "CREATE TABLE JOB_CALC_WEIGHTS_TABLE (JOB_ID INTEGER PRIMARY KEY, " + COLUMN_AYS_VAL +
                         " INTEGER, " + COLUMN_AYB_VAL + " INTEGER, " + COLUMN_RB_VAL +
                         " INTEGER, " + COLUMN_RA_VAL + " INTEGER, " + COLUMN_TDF_VAL + " INTEGER)";
 //
@@ -212,6 +208,55 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
         return returnedJobOffers;
     }
+
+    public List<JobRankDetails> getJobDetails() {
+        List<JobRankDetails> returnedJobOjects = new ArrayList<>();
+
+        String queryRequestStr = "SELECT * FROM " + JOB_OFFER_TABLE;
+        SQLiteDatabase appDB = this.getReadableDatabase(); // We just want to read the database here.
+
+        Cursor cursor = appDB.rawQuery(queryRequestStr,null);
+
+
+        if(cursor.moveToFirst()) {
+            // We want to iterate through the list here and create a JobDetails obj for each row
+            do {
+                Integer jobID = cursor.getInt(0);
+                String jobTitle = cursor.getString(1);
+                String jobCompanyName = cursor.getString(2);
+                String jobLocation = cursor.getString(3);
+                Integer jobCostOfLiving = cursor.getInt(4);
+                Integer jobAnnualSalary = cursor.getInt(5);
+                Integer jobAnnualBonus = cursor.getInt(6);
+                Integer jobRetirementBenefits = cursor.getInt(7);
+                Integer jobRelocationStipend = cursor.getInt(8);
+                Integer jobTrainingAndDevFund = cursor.getInt(9);
+                boolean currentJobIndicator = cursor.getInt(10) == 1 ? true: false;
+
+                // Omit job score (this should be hidden)
+
+                JobRankDetails jobObj = new JobRankDetails(jobTitle,jobCompanyName,jobLocation,
+                        jobCostOfLiving,jobAnnualSalary,jobAnnualBonus,jobRetirementBenefits,
+                        jobRelocationStipend,jobTrainingAndDevFund,currentJobIndicator);
+
+                returnedJobOjects.add(jobObj);
+
+            } while (cursor.moveToNext());
+        } else {
+
+            // Empty list
+        }
+
+        //close db connection
+        cursor.close();
+        appDB.close();
+
+        return returnedJobOjects;
+    }
+
+
+
+
 
     public List<Pair> getOffersWithIDs() {
         List<Pair> returnedJobOffersAndIDs = new ArrayList<>();

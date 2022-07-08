@@ -9,6 +9,7 @@ import android.provider.ContactsContract;
 import android.util.Pair;
 import android.view.View;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -17,7 +18,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class All_Jobs_Display extends AppCompatActivity {
+public class All_Jobs_Display extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Button viewAllBtn;
     private Button compareSelectedBtn;
@@ -90,6 +91,8 @@ public class All_Jobs_Display extends AppCompatActivity {
         compareSelectedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(All_Jobs_Display.this);
+                pullItemOutOfSpinner1(dataBaseHelper.getOffersWithIDs());
                 startComparison();
                 Toast.makeText(All_Jobs_Display.this,"Starting comparison",
                         Toast.LENGTH_SHORT).show();
@@ -114,7 +117,23 @@ public class All_Jobs_Display extends AppCompatActivity {
         ArrayAdapter<Pair> adapter = new ArrayAdapter<Pair>(this,android.R.layout.simple_spinner_dropdown_item, (List<Pair>) jobPairsFromDB);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToChange.setAdapter(adapter);
+        spinnerToChange.setOnItemSelectedListener(this);
+
     }
+
+
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(All_Jobs_Display.this);
+        List<Pair>jobPairsFromDB = dataBaseHelper.getOffersWithIDs();
+        Pair<Integer, JobDetails> job1PairSelection = jobPairsFromDB.get(position);
+                Toast.makeText(All_Jobs_Display.this," You selected: " + job1PairSelection,Toast.LENGTH_SHORT);
+            }
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+
+
+
 
     public void createJobSpinner2List(List<Pair> jobPairsFromDB, Spinner spinnerToChange) {
         ArrayAdapter<Pair> adapter = new ArrayAdapter<Pair>(this,android.R.layout.simple_spinner_dropdown_item, (List<Pair>) jobPairsFromDB);
@@ -130,5 +149,24 @@ public class All_Jobs_Display extends AppCompatActivity {
     public void returnToMainMenu() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void pullItemOutOfSpinner1(List<Pair> jobPairsFromSpinner) {
+        job1Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Pair<Integer, JobDetails> job1PairSelection = jobPairsFromSpinner.get(position);
+                Toast.makeText(All_Jobs_Display.this," You selected: " + job1PairSelection,Toast.LENGTH_SHORT);
+                 //job1Selected = (Pair<Integer,JobDetails>) job1Selected;
+                //job1Selected.toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 }
