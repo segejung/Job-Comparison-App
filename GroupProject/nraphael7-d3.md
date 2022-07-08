@@ -9,4 +9,4 @@ My accomplishments for this deliverable
   - added functionality to getOffers()
     - Now it populates a list of JobRankDetails objects, which are then sorted based on the computed jobScore for each.
 - Linked the Adjust Settings button to the database where it changes to the current seekbar value on each entry
-- 
+- Adding visibility of job comparison option as a dependency of a minimum of two jobs in the database.
