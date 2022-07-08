@@ -6,6 +6,9 @@ public class JobRankDetails extends JobDetails {
 
     private double jobScore;
 
+
+
+    private int jobID;
     private int salaryWeight;
     private int bonusWeight;
     private int retirementWeight;
@@ -83,6 +86,14 @@ public class JobRankDetails extends JobDetails {
     public int getRS() { return this.RS; }
 
     public int getTDF() { return this.TDF; }
+
+    public int getJobID() {
+        return jobID;
+    }
+
+    public void setJobID(int jobID) {
+        this.jobID = jobID;
+    }
 
     @Override
     public String toString() {

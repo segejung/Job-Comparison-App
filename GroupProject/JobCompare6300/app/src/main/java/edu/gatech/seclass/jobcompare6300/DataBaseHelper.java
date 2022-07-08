@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Pair;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -37,9 +38,13 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     public static final String COLUMN_RB_VAL = "COLUMN_RB_VAL";
     public static final String COLUMN_RA_VAL = "COLUMN_RA_VAL";
     public static final String COLUMN_TDF_VAL = "COLUMN_TDF_VAL";
+    public static final String JOB_ID = "JOB_ID";
+    public static final String JOB_CALC_WEIGHTS_TABLE = "JOB_CALC_WEIGHTS_TABLE";
+    public static final Integer dbVersion = 2;
+    public static final String COLUMN_STATUS = "COLUMN_STATUS";
 
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "jobData.db", null, 1);
+        super(context, "jobData.db", null, dbVersion);
     }
 
     // First Time the database is accessed
@@ -47,7 +52,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         // Creates the Table
         String createDBTableStatement =
-                "CREATE TABLE " + JOB_OFFER_TABLE + " (JOB_ID INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TITLE + " TEXT, " +
+                "CREATE TABLE " + JOB_OFFER_TABLE + " (" + JOB_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_TITLE + " TEXT, " +
                         COLUMN_COMPANY + " TEXT, " + COLUMN_LOCATION + " TEXT, " +
                         COLUMN_COST_OF_LIVING + " INTEGER, " + COLUMN_SALARY + " INTEGER, " + COLUMN_BONUS + " INTEGER, " +
                         COLUMN_RETIREMENT_BENEFITS + " INTEGER, " + COLUMN_RELOCATION_AMOUNT + " INTEGER, " +
@@ -55,26 +60,49 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
 
         // TODO: Create a SQL Table Statement for the weights
-        String createDBWeightTableStatement = "CREATE TABLE " + JOB_WEIGHT_TABLE + " (" + COLUMN_AYS +
-                " FLOAT, " + COLUMN_AYB + " FLOAT, " + COLUMN_RBP + " FLOAT, " + COLUMN_RS + " FLOAT, " +
+        String createDBWeightTableStatement = "CREATE TABLE " + JOB_WEIGHT_TABLE + " ("+ COLUMN_STATUS + " TEXT, " + COLUMN_AYS +
+                " FLOAT, " + COLUMN_AYB + " FLOAT, "
+                + COLUMN_RBP + " FLOAT, " + COLUMN_RS +
+                " FLOAT, " +
                 COLUMN_TDF + " FLOAT)";
 
+
+
         String createRankTableStatement =
-                "CREATE TABLE JOB_CALC_WEIGHTS_TABLE (JOB_ID INTEGER PRIMARY KEY, " + COLUMN_AYS_VAL +
+                "CREATE TABLE " + JOB_CALC_WEIGHTS_TABLE + " (" + JOB_ID + " INTEGER PRIMARY KEY, " + COLUMN_AYS_VAL +
                         " INTEGER, " + COLUMN_AYB_VAL + " INTEGER, " + COLUMN_RB_VAL +
                         " INTEGER, " + COLUMN_RA_VAL + " INTEGER, " + COLUMN_TDF_VAL + " INTEGER)";
 //
         db.execSQL(createDBTableStatement);
         db.execSQL(createDBWeightTableStatement);
         db.execSQL(createRankTableStatement);
+
+        this.setWeightsDefault(db);
 //
     }
 
     // Version Update
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        String queryStrMainTable = "DROP TABLE IF EXISTS " + JOB_OFFER_TABLE;
+        String queryStrWeightTable = "DROP TABLE IF EXISTS " + JOB_WEIGHT_TABLE;
+        String queryStrRankTable = "DROP TABLE IF EXISTS " + JOB_CALC_WEIGHTS_TABLE;
+        db.execSQL(queryStrMainTable);
+        db.execSQL(queryStrWeightTable);
+        db.execSQL(queryStrRankTable);
+        onCreate(db);
 
     }
+
+
+//    public boolean deleteDatabaseEntry(JobRankDetails jobObj)
+//    {
+//        //TODO: Find Customer Model in DB and then delete it
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        String queryStr = "DELETE FROM " +JOB_OFFER_TABLE + "WHERE " + JOB_ID + " = "
+//
+//
+//    }
 
     // TODO: Create a method that performs the
 
@@ -109,7 +137,31 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
     //TODO: Complete internal updating the weights via the database.
 
-    public boolean changeWeights(int AYS, int AYB, int RB, int RA, int TDF) {
+    public void setWeightsDefault(SQLiteDatabase appDB)
+    {
+
+        ContentValues defaults_cv = new ContentValues();
+        defaults_cv.put(COLUMN_STATUS,"CURRENT");
+        defaults_cv.put(COLUMN_AYS,1.0);
+        defaults_cv.put(COLUMN_AYB,1.0);
+        defaults_cv.put(COLUMN_RBP,1.0);
+        defaults_cv.put(COLUMN_RS,1.0);
+        defaults_cv.put(COLUMN_TDF,1.0);
+
+
+        long insert = appDB.insert(JOB_WEIGHT_TABLE, null , defaults_cv);
+
+
+//        Toast.makeText(Settings.class,"Default Settings applied: " + dbSuccess,Toast.LENGTH_SHORT);
+    }
+
+    public boolean changeWeightsInDB(Float[] settingsWeights) {
+
+        float AYS = settingsWeights[0];
+        float AYB = settingsWeights[1];
+        float RBP = settingsWeights[2];
+        float RS = settingsWeights[3];
+        float TDF = settingsWeights[4];
 
         SQLiteDatabase appDB = this.getWritableDatabase();
 
@@ -117,11 +169,15 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         ContentValues weights_cv = new ContentValues();
         weights_cv.put(COLUMN_AYS,AYS);
         weights_cv.put(COLUMN_AYB,AYB);
-        weights_cv.put(COLUMN_RETIREMENT_BENEFITS,RB);
-        weights_cv.put(COLUMN_RELOCATION_AMOUNT,RA);
+        weights_cv.put(COLUMN_RBP,RBP);
+        weights_cv.put(COLUMN_RS,RS);
         weights_cv.put(COLUMN_TDF,TDF);
 
-        long insert = appDB.insert(JOB_WEIGHT_TABLE, null , weights_cv);
+        long insert = appDB.update(JOB_WEIGHT_TABLE,weights_cv,"COLUMN_STATUS=?",new String[]{"CURRENT"});
+
+
+
+        //long insert = appDB.insert(JOB_WEIGHT_TABLE, null , weights_cv);
 
         if (insert == -1) { // Kicks back negative if it is a bad insert
             return false;
@@ -146,11 +202,11 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         if(weightCursor.moveToFirst()) {
 
             do {
-                Integer AYS_weight = weightCursor.getInt(1);
-                Integer AYB_weight = weightCursor.getInt(2);
-                Integer RB_weight = weightCursor.getInt(3);
-                Integer RA_weight = weightCursor.getInt(4);
-                Integer TDF_weight = weightCursor.getInt(5);
+                Float AYS_weight = weightCursor.getFloat(1);
+                Float AYB_weight = weightCursor.getFloat(2);
+                Float RB_weight = weightCursor.getFloat(3);
+                Float RA_weight = weightCursor.getFloat(4);
+                Float TDF_weight = weightCursor.getFloat(5);
             } while (weightCursor.moveToNext());
 
         } else {
@@ -162,12 +218,13 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         return weights;
     }
 
+
     /* returns a new JobDetails object with its details from the matching job ID */
     public JobDetails getJobDetailsWithId(int jobId) {
         JobDetails matchedJob = null;
 
         String queryRequestStr = "SELECT * FROM " + JOB_OFFER_TABLE
-                + " WHERE JOB_ID = " + String.valueOf(jobId);
+                + " WHERE " + JOB_ID + " = " + String.valueOf(jobId);
         SQLiteDatabase appDB = this.getReadableDatabase();
 
         Cursor cursor = appDB.rawQuery(queryRequestStr, null);
