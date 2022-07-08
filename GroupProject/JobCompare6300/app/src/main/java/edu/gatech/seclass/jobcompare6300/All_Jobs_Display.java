@@ -123,7 +123,45 @@ public class All_Jobs_Display extends AppCompatActivity {
     }
 
     public void startComparison() {
+        DataBaseHelper db = new DataBaseHelper(All_Jobs_Display.this);
+        Bundle bundle = new Bundle();
+
+        String job1Str = job1Spinner.getSelectedItem().toString();
+        String job2Str = job2Spinner.getSelectedItem().toString();
+        String job1IdStr = job1Str.split(" ", 2)[0].replaceAll("[\\D]", "");
+        String job2IdStr = job2Str.split(" ", 2)[0].replaceAll("[\\D]", "");
+
+        int job1Id = Integer.valueOf(job1IdStr);
+        int job2Id = Integer.valueOf(job2IdStr);
+
+        JobDetails job1 = db.getJobDetailsWithId(job1Id);
+        JobDetails job2 = db.getJobDetailsWithId(job2Id);
+
+        double job1AdjustedSalary = ((double) job1.getSalary()) * (((double) (job1.getCostOfLiving() - 100)) / 100.0);
+        double job1AdjustedBonus = ((double) job1.getBonus()) * (((double) (job1.getCostOfLiving() - 100)) / 100.0);
+        double job2AdjustedSalary = ((double) job2.getSalary()) * (((double) (job2.getCostOfLiving() - 100)) / 100.0);
+        double job2AdjustedBonus = ((double) job2.getBonus()) * (((double) (job2.getCostOfLiving() - 100)) / 100.0);
+
+        bundle.putString("job1Title", job1.getTitle());
+        bundle.putString("job1Company", job1.getCompany());
+        bundle.putString("job1Location", job1.getLocation());
+        bundle.putString("job1adjustedSalary", String.valueOf(job1AdjustedSalary));
+        bundle.putString("job1adjustedBonus", String.valueOf(job1AdjustedBonus));
+        bundle.putString("job1Benefits", String.valueOf(job1.getRetirementBenefits()));
+        bundle.putString("job1Stipend", String.valueOf(job1.getRelocationStipend()));
+        bundle.putString("job1trainingFund", String.valueOf(job1.getTrainingAndDevelopmentFund()));
+
+        bundle.putString("job2Title", job2.getTitle());
+        bundle.putString("job2Company", job2.getCompany());
+        bundle.putString("job2Location", job2.getLocation());
+        bundle.putString("job2adjustedSalary", String.valueOf(job2AdjustedSalary));
+        bundle.putString("job2adjustedBonus", String.valueOf(job2AdjustedBonus));
+        bundle.putString("job2Benefits", String.valueOf(job2.getRetirementBenefits()));
+        bundle.putString("job2Stipend", String.valueOf(job2.getRelocationStipend()));
+        bundle.putString("job2trainingFund", String.valueOf(job2.getTrainingAndDevelopmentFund()));
+
         Intent intent = new Intent(this, Job_Compare.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
