@@ -92,7 +92,6 @@ public class All_Jobs_Display extends AppCompatActivity implements AdapterView.O
             @Override
             public void onClick(View v) {
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(All_Jobs_Display.this);
-                pullItemOutOfSpinner1(dataBaseHelper.getOffersWithIDs());
                 startComparison();
                 Toast.makeText(All_Jobs_Display.this,"Starting comparison",
                         Toast.LENGTH_SHORT).show();
@@ -189,22 +188,5 @@ public class All_Jobs_Display extends AppCompatActivity implements AdapterView.O
         startActivity(intent);
     }
 
-    public void pullItemOutOfSpinner1(List<Pair> jobPairsFromSpinner) {
-        job1Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                Pair<Integer, JobDetails> job1PairSelection = jobPairsFromSpinner.get(position);
-                Toast.makeText(All_Jobs_Display.this," You selected: " + job1PairSelection,Toast.LENGTH_SHORT);
-                 //job1Selected = (Pair<Integer,JobDetails>) job1Selected;
-                //job1Selected.toString();
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-    }
 }
