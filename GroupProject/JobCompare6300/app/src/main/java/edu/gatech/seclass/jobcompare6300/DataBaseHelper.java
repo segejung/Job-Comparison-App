@@ -59,7 +59,6 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
                         COLUMN_TRAINING_FUND + " INTEGER, " + COLUMN_IS_CURRENT_JOB + " BOOLEAN, " + COLUMN_JOB_SCORE + " INTEGER)";
 
 
-        // TODO: Create a SQL Table Statement for the weights
         String createDBWeightTableStatement = "CREATE TABLE " + JOB_WEIGHT_TABLE + " ("+ COLUMN_STATUS + " TEXT, " + COLUMN_AYS +
                 " FLOAT, " + COLUMN_AYB + " FLOAT, "
                 + COLUMN_RBP + " FLOAT, " + COLUMN_RS +
@@ -135,7 +134,6 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
     }
 
-    //TODO: Complete internal updating the weights via the database.
 
     public void setWeightsDefault(SQLiteDatabase appDB)
     {
