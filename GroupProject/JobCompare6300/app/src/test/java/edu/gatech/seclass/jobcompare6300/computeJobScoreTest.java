@@ -6,9 +6,12 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import edu.gatech.seclass.jobcompare6300.JobRankDetails;
 
-public class JobRankDetailsTest {
+/***
+ * Test the computeJobScore() method in DB helper class
+ */
+public class computeJobScoreTest {
     @Test
-    public void testJobScore() {
+    public void testComputeJobScore() {
         String title = "Network Engineer";
         String company = "Cisco";
         String location = "Raleigh, NC";
@@ -21,23 +24,13 @@ public class JobRankDetailsTest {
 
         JobRankDetails job = new JobRankDetails(title, company, location, costOfLiving, salary,
                 bonus, retirementBenefits, relocationStipend, trainingFund, false);
-
-        int salaryWeight = 2;
-        int bonusWeight = 1;
-        int retirementWeight = 1;
-        int relocationWeight = 2;
-        int trainingWeight = 2;
-
-        job.setSalaryWeight(salaryWeight);
-        job.setBonusWeight(bonusWeight);
-        job.setRetirementWeight(retirementWeight);
-        job.setRelocationWeight(relocationWeight);
-        job.setTrainingWeight(trainingWeight);
-
+        DataBaseHelper dbHelper = new DataBaseHelper(null);
+        // set weights for AYS, AYB, RBP, RS, and TDF
+        double[] weights = {2.0, 1.0, 1.0, 2.0, 2.0};
         double delta = 0.5;
 
-        double actualScore = job.getJobScore();
+        double actualScore = dbHelper.computeJobScore(job, weights);
 
-        assertEquals(33000.0, job.getJobScore(), delta);
+        assertEquals(33000.0, actualScore, delta);
     }
 }

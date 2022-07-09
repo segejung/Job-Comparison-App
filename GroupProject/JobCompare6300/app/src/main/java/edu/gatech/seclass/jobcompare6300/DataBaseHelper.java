@@ -139,6 +139,33 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         return jobScoreCalculated;
     }
 
+    // overload the method to decouple computation from db for unit testing
+    public double computeJobScore(JobRankDetails jobToCompute, double[] jobWeights) {
+        double salaryWeight = jobWeights[0];
+        double bonusWeight = jobWeights[1];
+        double retirementWeight = jobWeights[2];
+        double relocationWeight= jobWeights[3];
+        double trainingWeight = jobWeights[4];
+
+
+        double sumWeights = salaryWeight + bonusWeight + retirementWeight + relocationWeight + trainingWeight;
+
+        double jobScoreCalculated = 0;
+
+        double AYSval = ((double) jobToCompute.getSalary()) / (((double) jobToCompute.getCostOfLiving()) / 100.0);
+        double AYBval = ((double) jobToCompute.getBonus()) / (((double) jobToCompute.getCostOfLiving()) / 100.0);
+        double RBPval = (double) jobToCompute.getRetirementBenefits();
+        double RSval = (double) jobToCompute.getRelocationStipend();
+        double TDFval = (double) jobToCompute.getTrainingAndDevelopmentFund();
+
+        jobScoreCalculated = AYSval * ((double) salaryWeight / sumWeights)
+                + AYBval * ((double) bonusWeight / sumWeights)
+                + (RBPval * AYSval / 100.0) * ((double) retirementWeight / sumWeights)
+                + RSval * ((double) relocationWeight / sumWeights)
+                + TDFval * ((double) trainingWeight / sumWeights);
+        return jobScoreCalculated;
+    }
+
     //Adding items to the database
     public boolean addOne(JobRankDetails jobDetails) {
 
