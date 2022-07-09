@@ -16,7 +16,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class DataBaseHelper extends  SQLiteOpenHelper{
 
@@ -291,6 +293,110 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         appDB.close();
 
         return weights;
+    }
+
+    public void updateJobScores() {
+        SQLiteDatabase appDB = this.getReadableDatabase();
+
+        JobRankDetails jobToBeUpdated;
+
+        HashMap<Integer,JobRankDetails> jobsToBeUpdatedWithIDs = new HashMap<Integer, JobRankDetails>();
+
+        String jobScoreQuery = "SELECT * FROM " + JOB_OFFER_TABLE;
+
+        Cursor cursor = appDB.rawQuery(jobScoreQuery, null);
+
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                Integer jobID = cursor.getInt(0);
+                String jobTitle = cursor.getString(1);
+                String jobCompanyName = cursor.getString(2);
+                String jobLocation = cursor.getString(3);
+                Integer jobCostOfLiving = cursor.getInt(4);
+                Integer jobAnnualSalary = cursor.getInt(5);
+                Integer jobAnnualBonus = cursor.getInt(6);
+                Integer jobRetirementBenefits = cursor.getInt(7);
+                Integer jobRelocationStipend = cursor.getInt(8);
+                Integer jobTrainingAndDevFund = cursor.getInt(9);
+                boolean currentJobIndicator = cursor.getInt(10) == 1 ? true : false;
+                Double jobScore = cursor.getDouble(11);
+
+                jobToBeUpdated = new JobRankDetails(jobTitle, jobCompanyName, jobLocation,
+                        jobCostOfLiving, jobAnnualSalary, jobAnnualBonus, jobRetirementBenefits,
+                        jobRelocationStipend, jobTrainingAndDevFund, currentJobIndicator);
+                jobToBeUpdated.setJobScore(jobScore);
+                jobsToBeUpdatedWithIDs.put(jobID, jobToBeUpdated);
+
+            } while (cursor.moveToNext());
+
+        }else {
+            // Empty
+
+        }
+
+        cursor.close();
+        appDB.close();
+
+
+        JobRankDetails jobToBeCalculated;
+        Double updatedJobScore;
+
+        // Calculation Loop
+
+        for (Integer key : jobsToBeUpdatedWithIDs.keySet()) {
+            jobToBeCalculated = jobsToBeUpdatedWithIDs.get(key);
+            updatedJobScore = this.computeJobScore(jobToBeCalculated);
+            //DB will be open and then closed for the computing the new job scores
+            jobToBeCalculated.setJobScore(updatedJobScore);
+            jobsToBeUpdatedWithIDs.put(key,jobToBeCalculated);
+        }
+
+        SQLiteDatabase appDBWrite = this.getWritableDatabase();
+
+        JobRankDetails updatedJob;
+
+
+        // Update loop
+        String whereArgs;
+
+        for (Integer key : jobsToBeUpdatedWithIDs.keySet()) {
+
+            ContentValues updateScores_cv = new ContentValues();
+            updatedJob = jobsToBeUpdatedWithIDs.get(key);
+
+            updateScores_cv.put(COLUMN_JOB_SCORE,updatedJob.getJobScore());
+            whereArgs = String.valueOf(key);
+
+            appDBWrite.update(JOB_OFFER_TABLE,updateScores_cv,"JOB_ID=?",new String[]{whereArgs});
+
+
+//            if (insert == -1) { // Kicks back negative if it is a bad insert
+//                return false;
+//            } else {
+//                return true;
+//            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
