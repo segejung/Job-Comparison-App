@@ -142,6 +142,10 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     //Adding items to the database
     public boolean addOne(JobRankDetails jobDetails) {
 
+        //Perform job calculation first so database can be disconnected from before it is written to
+        Double currentJobScore = this.computeJobScore(jobDetails);
+        // This is necessary due to the just in time calculations
+
         //Used to write to the database
         SQLiteDatabase appDB = this.getWritableDatabase();
 
@@ -156,7 +160,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         cv.put(COLUMN_RELOCATION_AMOUNT,jobDetails.getRelocationStipend());
         cv.put(COLUMN_TRAINING_FUND,jobDetails.getTrainingAndDevelopmentFund());
         cv.put(COLUMN_IS_CURRENT_JOB,jobDetails.isCurrentJob());
-        cv.put(COLUMN_JOB_SCORE,this.computeJobScore(jobDetails));
+        cv.put(COLUMN_JOB_SCORE,currentJobScore);
 
         long insert = appDB.insert(JOB_OFFER_TABLE, null , cv);
 
