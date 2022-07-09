@@ -343,7 +343,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
             public int compare(JobRankDetails j1, JobRankDetails j2) {
                 return Double.compare(j1.getJobScore(),j2.getJobScore());
             }
-        });
+        }.reversed());
 
         return returnedJobOffers;
     }
