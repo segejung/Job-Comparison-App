@@ -17,6 +17,12 @@ public class JobRankDetails extends JobDetails {
     private boolean currentJob;
 
 
+    public JobRankDetails()
+    {
+
+    }
+
+
     public JobRankDetails(String title, String company, String location, int costOfLiving,
                           int yearlySalary, int yearlyBonus, int retirementBenefits,
                           int relocationStipend, int trainingAndDevelopmentFund, boolean currentJobStatus) {
