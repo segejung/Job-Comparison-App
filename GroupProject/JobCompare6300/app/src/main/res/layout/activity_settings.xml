@@ -42,7 +42,7 @@
                     android:layout_width="166dp"
                     android:layout_height="33dp"
                     android:text="     Salary Weight"
-                    android:textAlignment="textEnd" />
+                    android:textAlignment="textStart" />
 
                 <TextView
                     android:id="@+id/salaryWeightValue"
