@@ -16,25 +16,12 @@ public class JobRankDetails extends JobDetails {
     private int trainingWeight;
     private boolean currentJob;
 
-    private int AYS;
-    private int AYB;
-    private int RBP;
-    private int RS;
-    private int TDF;
-
 
     public JobRankDetails(String title, String company, String location, int costOfLiving,
                           int yearlySalary, int yearlyBonus, int retirementBenefits,
                           int relocationStipend, int trainingAndDevelopmentFund, boolean currentJobStatus) {
         super(title, company, location, costOfLiving, yearlySalary, yearlyBonus, retirementBenefits,
                 relocationStipend, trainingAndDevelopmentFund,currentJobStatus);
-
-        // need to adjust these based on cost of living
-        this.AYS = yearlySalary;
-        this.AYB = yearlyBonus;
-        this.RBP = retirementBenefits;
-        this.RS = relocationStipend;
-        this.TDF = trainingAndDevelopmentFund;
     }
 
     public void setJobScore(double jobScore) {
@@ -65,16 +52,6 @@ public class JobRankDetails extends JobDetails {
 
     public void setTrainingWeight(int trainingWeight) { this.trainingWeight = trainingWeight; }
 
-    public int getAYS() { return this.AYS; }
-
-    public int getAYB() { return this.AYB; }
-
-    public int getRBP() { return this.RBP; }
-
-    public int getRS() { return this.RS; }
-
-    public int getTDF() { return this.TDF; }
-
     public int getJobID() {
         return jobID;
     }
@@ -93,11 +70,6 @@ public class JobRankDetails extends JobDetails {
                 ", relocationWeight=" + relocationWeight +
                 ", trainingWeight=" + trainingWeight +
                 ", currentJob=" + currentJob +
-                ", AYS=" + AYS +
-                ", AYB=" + AYB +
-                ", RBP=" + RBP +
-                ", RS=" + RS +
-                ", TDF=" + TDF +
                 '}';
     }
 }
