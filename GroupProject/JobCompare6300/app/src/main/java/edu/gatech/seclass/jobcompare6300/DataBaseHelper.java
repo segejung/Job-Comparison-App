@@ -191,6 +191,21 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 //        Toast.makeText(Settings.class,"Default Settings applied: " + dbSuccess,Toast.LENGTH_SHORT);
     }
 
+    public boolean removeCurrentJobStatusInDB() {
+        SQLiteDatabase appDB = this.getWritableDatabase();
+        ContentValues jobStatus_cv = new ContentValues();
+        jobStatus_cv.put(COLUMN_IS_CURRENT_JOB, 0);
+        long insert = appDB.update(JOB_OFFER_TABLE,jobStatus_cv,"COLUMN_IS_CURRENT_JOB=?",new String[]{"1"});
+
+        if (insert == -1) { // Kicks back negative if it is a bad insert
+            return false;
+        } else {
+            return true;
+        }
+
+
+    }
+
     public boolean changeWeightsInDB(Float[] settingsWeights) {
 
         float AYS = settingsWeights[0];
