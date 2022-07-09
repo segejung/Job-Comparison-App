@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Settings extends AppCompatActivity {
@@ -18,6 +19,11 @@ public class Settings extends AppCompatActivity {
     private SeekBar retirementSeek;
     private SeekBar relocationSeek;
     private SeekBar trainingSeek;
+    private TextView salaryWeightValue;
+    private TextView bonusWeightValue;
+    private TextView retirementWeightValue;
+    private TextView relocationWeightValue;
+    private TextView trainingWeightValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,43 @@ public class Settings extends AppCompatActivity {
                 saveSettingsForUser();
             }
         });
+
+        DataBaseHelper appDBHelper = new DataBaseHelper(Settings.this);
+        double[] jobWeights = appDBHelper.getJobWeights();
+        setSeekersAndValues();
+
+        salarySeek.setProgress((int) Math.round(jobWeights[0]));
+        salaryWeightValue.setText(String.valueOf(Math.round(jobWeights[0])));
+
+        bonusSeek.setProgress((int) Math.round(jobWeights[1]));
+        bonusWeightValue.setText(String.valueOf(Math.round(jobWeights[1])));
+
+        retirementSeek.setProgress((int) Math.round(jobWeights[2]));
+        retirementWeightValue.setText(String.valueOf(Math.round(jobWeights[2])));
+
+        relocationSeek.setProgress((int) Math.round(jobWeights[3]));
+        relocationWeightValue.setText(String.valueOf(Math.round(jobWeights[3])));
+
+        trainingSeek.setProgress((int) Math.round(jobWeights[4]));
+        trainingWeightValue.setText(String.valueOf(Math.round(jobWeights[4])));
+
+    }
+
+    public void setSeekersAndValues() {
+        salarySeek = findViewById(R.id.seekBarSalary);
+        salaryWeightValue = findViewById(R.id.salaryWeightValue);
+
+        bonusSeek = findViewById(R.id.seekBarBonus);
+        bonusWeightValue = findViewById(R.id.bonusWeightValue);
+
+        retirementSeek = findViewById(R.id.seekBarRetirement);
+        retirementWeightValue = findViewById(R.id.retirementWeightValue3);
+
+        relocationSeek = findViewById(R.id.seekBarRelocation);
+        relocationWeightValue = findViewById(R.id.relocationWeightValue4);
+
+        trainingSeek = findViewById(R.id.seekBarTraining);
+        trainingWeightValue = findViewById(R.id.trainingWeightValue5);
     }
 
     public void returnToMainMenu() {
@@ -53,19 +96,21 @@ public class Settings extends AppCompatActivity {
         DataBaseHelper appDBHelper = new DataBaseHelper(Settings.this);
         Float[] jobWeights = new Float[5];
 
-        salarySeek = findViewById(R.id.seekBarSalary);
         jobWeights[0] = (float)salarySeek.getProgress();
-        bonusSeek = findViewById(R.id.seekBarBonus);
         jobWeights[1] = (float)bonusSeek.getProgress();
-        retirementSeek = findViewById(R.id.seekBarRetirement);
         jobWeights[2] = (float)retirementSeek.getProgress();
-        relocationSeek = findViewById(R.id.seekBarRelocation);
         jobWeights[3] = (float)relocationSeek.getProgress();
-        trainingSeek = findViewById(R.id.seekBarRelocation);
         jobWeights[4] = (float)trainingSeek.getProgress();
 
-        boolean dbSuccess = appDBHelper.changeWeightsInDB(jobWeights);
 
+        salaryWeightValue.setText(String.valueOf(Math.round(jobWeights[0])));
+        bonusWeightValue.setText(String.valueOf(Math.round(jobWeights[1])));
+        retirementWeightValue.setText(String.valueOf(Math.round(jobWeights[2])));
+        relocationWeightValue.setText(String.valueOf(Math.round(jobWeights[3])));
+        trainingWeightValue.setText(String.valueOf(Math.round(jobWeights[4])));
+
+
+        boolean dbSuccess = appDBHelper.changeWeightsInDB(jobWeights);
 
         Toast.makeText(Settings.this,
                 "New Job Weight Settings Saved Status: "+ dbSuccess,Toast.LENGTH_SHORT).show();
