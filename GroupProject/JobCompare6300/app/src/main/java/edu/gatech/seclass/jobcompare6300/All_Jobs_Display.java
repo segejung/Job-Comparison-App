@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class All_Jobs_Display extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -46,8 +47,13 @@ public class All_Jobs_Display extends AppCompatActivity implements AdapterView.O
                 try {
                     List<JobRankDetails> jobListEntries = databaseHelper.getOffers();
 
-                    ArrayAdapter jobOfferListArrayAdapter = new ArrayAdapter<JobRankDetails>(All_Jobs_Display.this,
-                            android.R.layout.simple_list_item_1,jobListEntries);
+                    List<String> jobListHeaders = new ArrayList<String>();
+                    for (JobRankDetails j : jobListEntries) {
+                        jobListHeaders.add(j.getTitle() + ", " + j.getCompany());
+                    }
+
+                    ArrayAdapter jobOfferListArrayAdapter = new ArrayAdapter<String>(All_Jobs_Display.this,
+                            android.R.layout.simple_list_item_1,jobListHeaders);
                     jobListDisplay.setAdapter(jobOfferListArrayAdapter);
 
                     //Toast.makeText(All_Jobs_Display.this,jobListEntries.toString(),Toast.LENGTH_SHORT).show();
