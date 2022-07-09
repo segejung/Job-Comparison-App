@@ -15,12 +15,15 @@ public class MainActivity extends AppCompatActivity {
     private Button updateCurrentJobBtn;
     private Button adjustSettingsBtn;
     private Button compareJobsBtn;
+    private boolean enableJobComparison;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
 
         //appDB = openOrCreateDatabase("JobData.db",SQLiteDatabase.CREATE_IF_NECESSARY ,null);
 
@@ -49,8 +52,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         compareJobsBtn = (Button)findViewById(R.id.compareJobsButtonId);
+
+        enableJobComparison = dataBaseHelper.checkForEnoughJobsToCompare();
+
+        if (enableJobComparison == false) {
+            compareJobsBtn.setVisibility(View.INVISIBLE);
+        }
+
+
         compareJobsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
