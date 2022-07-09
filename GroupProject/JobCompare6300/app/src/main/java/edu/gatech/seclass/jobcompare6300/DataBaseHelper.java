@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -121,8 +122,8 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
         double jobScoreCalculated = 0;
 
-            double AYSval = (double) jobToCompute.getSalary();
-            double AYBval = (double) jobToCompute.getBonus();
+            double AYSval = ((double) jobToCompute.getSalary()) / (((double) jobToCompute.getCostOfLiving()) / 100.0);
+            double AYBval = ((double) jobToCompute.getBonus()) / (((double) jobToCompute.getCostOfLiving()) / 100.0);
             double RBPval = (double) jobToCompute.getRetirementBenefits();
             double RSval = (double) jobToCompute.getRelocationStipend();
             double TDFval = (double) jobToCompute.getTrainingAndDevelopmentFund();
@@ -299,6 +300,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
         Cursor cursor = appDB.rawQuery(queryRequestStr,null);
         double calculatedJobScore = 0.0;
+        DecimalFormat df = new DecimalFormat("#.##");
 
         // TODO: Change this so it sorts by Job Score greatest to least (currently least to greatest)
 
@@ -323,7 +325,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
                         jobCostOfLiving,jobAnnualSalary,jobAnnualBonus,jobRetirementBenefits,
                         jobRelocationStipend,jobTrainingAndDevFund,currentJobIndicator);
                 calculatedJobScore = this.computeJobScore(listedJob);
-                listedJob.setJobScore(calculatedJobScore);
+                listedJob.setJobScore(Double.valueOf(df.format(calculatedJobScore)));
                 returnedJobOffers.add(listedJob);
 
             } while (cursor.moveToNext());
