@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import java.util.regex.Pattern;
+
 public class Job_Entry extends AppCompatActivity {
 
     //public SQLiteDatabase appDB;
@@ -60,6 +62,26 @@ public class Job_Entry extends AppCompatActivity {
                 // Creating a job with the entered details
                 try { // Try catch for any input exceptions
 
+                    if (!isValidLocationInput(locationEntryField.getText().toString())) {
+                        locationEntryField.setError("Invalid location");
+                        throw new IllegalArgumentException("Invalid location entry");
+                    }
+
+                    if (!isValidColIndexInput(costOfLivingEntryField.getText().toString())) {
+                        costOfLivingEntryField.setError("Invalid Cost of Living Index");
+                        throw new IllegalArgumentException("Invalid Cost of Living Index");
+                    }
+
+                    if (!isValidRetirementBenefit(retirementBenefitsEntryField.getText().toString())) {
+                        retirementBenefitsEntryField.setError("Invalid Retirement Benefits");
+                        throw new IllegalArgumentException("Invalid Retirement Benefits");
+                    }
+
+                    if (!isValidTrainingFund(trainingFundEntryField.getText().toString())) {
+                        trainingFundEntryField.setError("Invalid Training Fund Amount");
+                        throw new IllegalArgumentException("Invalid Training Fund Amount");
+                    }
+
                     jobOfferDetails = new JobRankDetails(
                             titleEntryField.getText().toString(),
                             companyEntryField.getText().toString(),
@@ -85,6 +107,10 @@ public class Job_Entry extends AppCompatActivity {
 
                     openMainMenu();
 
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(Job_Entry.this,
+                            e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
 
                     Toast.makeText(Job_Entry.this,
@@ -121,6 +147,26 @@ public class Job_Entry extends AppCompatActivity {
     public void openMainMenu() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public boolean isValidLocationInput(String location) {
+        final Pattern pattern = Pattern.compile("^[A-Za-z, \\-]+$");
+        return pattern.matcher(location).matches();
+    }
+
+    public boolean isValidColIndexInput (String costOfLiving) {
+        int colIndex = Integer.parseInt(costOfLiving);
+        return (colIndex >= 1) && (colIndex <= 500);
+    }
+
+    public boolean isValidRetirementBenefit (String retirementBenefit) {
+        int benefitPercentage = Integer.parseInt(retirementBenefit);
+        return (benefitPercentage >= 0) && (benefitPercentage <= 100);
+    }
+
+    public boolean isValidTrainingFund (String trainingFund) {
+        int fundAmount = Integer.parseInt(trainingFund);
+        return (fundAmount >= 0) && (fundAmount <= 18000);
     }
 
 //    public void saveToTheSQLiteDB() {
