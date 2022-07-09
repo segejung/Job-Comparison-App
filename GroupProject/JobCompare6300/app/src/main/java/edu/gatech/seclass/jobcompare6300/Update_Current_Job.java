@@ -76,6 +76,7 @@ public class Update_Current_Job extends AppCompatActivity {
                     // TODO: Update the database to turn the prior current job to false and leave this as true
 
                     DataBaseHelper dataBaseHelper = new DataBaseHelper(Update_Current_Job.this);
+                    dataBaseHelper.removeCurrentJobStatusInDB(); // testing removal
                     boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
                     Toast.makeText(Update_Current_Job.this,
@@ -86,8 +87,6 @@ public class Update_Current_Job extends AppCompatActivity {
                             "New Current Job Saved", Toast.LENGTH_SHORT).show();
 
                     returnToMainMenu();
-
-                    // TODO: Fix bug where current job indicator doesn't carry over
 
                 } catch (Exception e) {
 

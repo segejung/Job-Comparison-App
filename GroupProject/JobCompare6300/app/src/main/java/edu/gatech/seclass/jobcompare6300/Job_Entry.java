@@ -60,6 +60,8 @@ public class Job_Entry extends AppCompatActivity {
 
                 JobRankDetails jobOfferDetails; // Makes it before the try catch
                 // Creating a job with the entered details
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(Job_Entry.this);
+
                 try { // Try catch for any input exceptions
 
                     if (!isValidLocationInput(locationEntryField.getText().toString())) {
@@ -94,7 +96,14 @@ public class Job_Entry extends AppCompatActivity {
                             Integer.parseInt(trainingFundEntryField.getText().toString()),
                             switchForCurrentJobIndicator.isChecked());
 
-                    DataBaseHelper dataBaseHelper = new DataBaseHelper(Job_Entry.this);
+                    if (switchForCurrentJobIndicator.isChecked()){
+                        dataBaseHelper.removeCurrentJobStatusInDB();
+
+                        Toast.makeText(Job_Entry.this,
+                                "New Current Job Saved", Toast.LENGTH_SHORT).show();
+
+                    }
+
                     boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
                     Toast.makeText(Job_Entry.this,

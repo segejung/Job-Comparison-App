@@ -112,7 +112,11 @@ public class Settings extends AppCompatActivity {
 
         boolean dbSuccess = appDBHelper.changeWeightsInDB(jobWeights);
 
+
+
         Toast.makeText(Settings.this,
                 "New Job Weight Settings Saved Status: "+ dbSuccess,Toast.LENGTH_SHORT).show();
+
+        appDBHelper.updateJobScores();
     }
 }
