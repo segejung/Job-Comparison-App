@@ -3,6 +3,7 @@ package edu.gatech.seclass.jobcompare6300;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Pair;
@@ -94,6 +95,23 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         db.execSQL(queryStrWeightTable);
         db.execSQL(queryStrRankTable);
         onCreate(db);
+
+    }
+
+    public boolean checkForEnoughJobsToCompare() {
+        boolean goodForComparison;
+        SQLiteDatabase appDB = this.getReadableDatabase();
+
+        long numberOfRows = DatabaseUtils.queryNumEntries(appDB,JOB_OFFER_TABLE);
+
+        if (numberOfRows >= 2) {
+            goodForComparison = true;
+        } else {
+            goodForComparison = false;
+        }
+
+        return goodForComparison;
+
 
     }
 
