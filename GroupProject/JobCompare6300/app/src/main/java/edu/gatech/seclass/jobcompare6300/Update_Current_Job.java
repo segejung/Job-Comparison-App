@@ -54,14 +54,14 @@ public class Update_Current_Job extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                JobDetails jobOfferDetails = new JobDetails();
+                JobRankDetails jobOfferDetails = new JobRankDetails();
 
 
                 // Creating a job with the entered details
                 try { // Try catch for any input exceptions
 
 
-                    jobOfferDetails = new JobDetails(
+                    jobOfferDetails = new JobRankDetails(
                             titleEntryField.getText().toString(),
                             companyEntryField.getText().toString(),
                             locationEntryField.getText().toString(),

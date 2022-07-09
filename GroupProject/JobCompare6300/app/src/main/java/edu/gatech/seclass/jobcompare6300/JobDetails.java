@@ -14,7 +14,7 @@ public class JobDetails {
     private int relocationStipend;
     private int trainingAndDevelopmentFund;
 
-    private boolean isCurrentJob = false;
+    private boolean isCurrentJob;
 
 
 //Constructors
@@ -35,6 +35,7 @@ public class JobDetails {
         this.retirementBenefits = retirementBenefits;
         this.relocationStipend = relocationStipend;
         this.trainingAndDevelopmentFund = trainingAndDevelopmentFund;
+        this.isCurrentJob = isCurrentJob;
     }
 
     public String getTitle() {
@@ -109,7 +110,7 @@ public class JobDetails {
         this.trainingAndDevelopmentFund = trainingAndDevelopmentFund;
     }
 
-    public boolean isCurrentJob() {
+    public boolean getIsCurrentJob() {
         return isCurrentJob;
     }
 
