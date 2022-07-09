@@ -159,7 +159,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         cv.put(COLUMN_RETIREMENT_BENEFITS,jobDetails.getRetirementBenefits());
         cv.put(COLUMN_RELOCATION_AMOUNT,jobDetails.getRelocationStipend());
         cv.put(COLUMN_TRAINING_FUND,jobDetails.getTrainingAndDevelopmentFund());
-        cv.put(COLUMN_IS_CURRENT_JOB,jobDetails.isCurrentJob());
+        cv.put(COLUMN_IS_CURRENT_JOB,jobDetails.getIsCurrentJob());
         cv.put(COLUMN_JOB_SCORE,currentJobScore);
 
         long insert = appDB.insert(JOB_OFFER_TABLE, null , cv);
@@ -306,7 +306,6 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         double calculatedJobScore = 0.0;
         DecimalFormat df = new DecimalFormat("#.##");
 
-        // TODO: Change this so it sorts by Job Score greatest to least (currently least to greatest)
 
         if(cursor.moveToFirst()) {
             // We want to iterate through the list here and create a JobRankDetails obj for each row
@@ -322,13 +321,15 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
                 Integer jobRelocationStipend = cursor.getInt(8);
                 Integer jobTrainingAndDevFund = cursor.getInt(9);
                 boolean currentJobIndicator = cursor.getInt(10) == 1 ? true: false;
+                calculatedJobScore = cursor.getDouble(11);
 
                 // Omit job score (this should be hidden)
 
                 JobRankDetails listedJob = new JobRankDetails(jobTitle,jobCompanyName,jobLocation,
                         jobCostOfLiving,jobAnnualSalary,jobAnnualBonus,jobRetirementBenefits,
                         jobRelocationStipend,jobTrainingAndDevFund,currentJobIndicator);
-                calculatedJobScore = this.computeJobScore(listedJob);
+//                calculatedJobScore = this.computeJobScore(listedJob);
+
                 listedJob.setJobScore(Double.valueOf(df.format(calculatedJobScore)));
                 returnedJobOffers.add(listedJob);
 
