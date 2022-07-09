@@ -140,7 +140,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
     }
 
     //Adding items to the database
-    public boolean addOne(JobDetails jobDetails) {
+    public boolean addOne(JobRankDetails jobDetails) {
 
         //Used to write to the database
         SQLiteDatabase appDB = this.getWritableDatabase();
@@ -156,7 +156,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         cv.put(COLUMN_RELOCATION_AMOUNT,jobDetails.getRelocationStipend());
         cv.put(COLUMN_TRAINING_FUND,jobDetails.getTrainingAndDevelopmentFund());
         cv.put(COLUMN_IS_CURRENT_JOB,jobDetails.isCurrentJob());
-        cv.put(COLUMN_JOB_SCORE,0);
+        cv.put(COLUMN_JOB_SCORE,this.computeJobScore(jobDetails));
 
         long insert = appDB.insert(JOB_OFFER_TABLE, null , cv);
 
@@ -305,7 +305,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         // TODO: Change this so it sorts by Job Score greatest to least (currently least to greatest)
 
         if(cursor.moveToFirst()) {
-            // We want to iterate through the list here and create a JobDetails obj for each row
+            // We want to iterate through the list here and create a JobRankDetails obj for each row
             do {
                 // Omit primary key id
                 String jobTitle = cursor.getString(1);
@@ -343,7 +343,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
             public int compare(JobRankDetails j1, JobRankDetails j2) {
                 return Double.compare(j1.getJobScore(),j2.getJobScore());
             }
-        }.reversed());
+        }.reversed()); // This was clever lol, don't know how I missed that, guess I was tired. - Nelson R.
 
         return returnedJobOffers;
     }
