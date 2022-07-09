@@ -56,11 +56,11 @@ public class Job_Entry extends AppCompatActivity {
             public void onClick(View v) {
                 //Toast.makeText(Job_Entry.this, "I do something", Toast.LENGTH_LONG).show();
 
-                JobDetails jobOfferDetails; // Makes it before the try catch
+                JobRankDetails jobOfferDetails; // Makes it before the try catch
                 // Creating a job with the entered details
                 try { // Try catch for any input exceptions
 
-                    jobOfferDetails = new JobDetails(
+                    jobOfferDetails = new JobRankDetails(
                             titleEntryField.getText().toString(),
                             companyEntryField.getText().toString(),
                             locationEntryField.getText().toString(),
