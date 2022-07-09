@@ -5,15 +5,6 @@ import android.util.Pair;
 public class JobRankDetails extends JobDetails {
 
     private double jobScore;
-    private int jobID;
-    private int salaryWeight;
-    private int bonusWeight;
-    private int retirementWeight;
-    private int relocationWeight;
-    private int trainingWeight;
-
-
-
 
     public JobRankDetails()
     {
@@ -33,47 +24,6 @@ public class JobRankDetails extends JobDetails {
 
     public double getJobScore() {
         return this.jobScore;
-    }
-
-
-    public int getSalaryWeight() {
-        return salaryWeight;
-    }
-
-    public void setSalaryWeight(int salaryWeight) {
-        this.salaryWeight = salaryWeight;
-    }
-
-    public int getBonusWeight() {
-        return bonusWeight;
-    }
-
-    public void setBonusWeight(int bonusWeight) {
-        this.bonusWeight = bonusWeight;
-    }
-
-    public int getRetirementWeight() {
-        return retirementWeight;
-    }
-
-    public void setRetirementWeight(int retirementWeight) {
-        this.retirementWeight = retirementWeight;
-    }
-
-    public int getRelocationWeight() {
-        return relocationWeight;
-    }
-
-    public void setRelocationWeight(int relocationWeight) {
-        this.relocationWeight = relocationWeight;
-    }
-
-    public int getTrainingWeight() {
-        return trainingWeight;
-    }
-
-    public void setTrainingWeight(int trainingWeight) {
-        this.trainingWeight = trainingWeight;
     }
 
     @Override
