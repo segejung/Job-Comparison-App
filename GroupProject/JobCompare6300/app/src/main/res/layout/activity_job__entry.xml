@@ -436,6 +436,13 @@
                 android:orientation="horizontal"></LinearLayout>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/enterAnotherBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#003057"
+            android:text="@string/EnterAnotherJob" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
