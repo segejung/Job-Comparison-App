@@ -170,10 +170,16 @@ public class Job_Entry extends AppCompatActivity {
             public void onClick(View v) {
                 // check if there is a current job in the database
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(Job_Entry.this);
+                JobRankDetails currentJobOfUser;
+                JobRankDetails enteredJob;
                 if(dataBaseHelper.checkForACurrentJobInTheDB())
                 {
                     Toast.makeText(Job_Entry.this,
                             "There is a current job to be compared.",Toast.LENGTH_SHORT).show();
+
+                    currentJobOfUser = dataBaseHelper.getCurrentJobInTheDB();
+                    enteredJob = pullTextFieldsEntry();
+
                 } else {
                     Toast.makeText(Job_Entry.this,
                             "There is no current job to be compared.",Toast.LENGTH_SHORT).show();
@@ -181,7 +187,7 @@ public class Job_Entry extends AppCompatActivity {
                 // then if so run this
                 //openJobCompareActivity;
 
-                //otherwise toast and say no current job set
+
             }
         });
 
@@ -236,6 +242,79 @@ public class Job_Entry extends AppCompatActivity {
         switchForCurrentJobIndicator.setChecked(false);
 
 
+    }
+
+    public JobRankDetails pullTextFieldsEntry() {
+        JobRankDetails pulledJob = new JobRankDetails();
+
+        try { // Try catch for any input exceptions
+
+            if (!isValidLocationInput(locationEntryField.getText().toString())) {
+                locationEntryField.setError("Invalid location");
+                throw new IllegalArgumentException("Invalid location entry");
+            }
+
+            if (!isValidColIndexInput(costOfLivingEntryField.getText().toString())) {
+                costOfLivingEntryField.setError("Invalid Cost of Living Index");
+                throw new IllegalArgumentException("Invalid Cost of Living Index");
+            }
+
+            if (!isValidRetirementBenefit(retirementBenefitsEntryField.getText().toString())) {
+                retirementBenefitsEntryField.setError("Invalid Retirement Benefits");
+                throw new IllegalArgumentException("Invalid Retirement Benefits");
+            }
+
+            if (!isValidTrainingFund(trainingFundEntryField.getText().toString())) {
+                trainingFundEntryField.setError("Invalid Training Fund Amount");
+                throw new IllegalArgumentException("Invalid Training Fund Amount");
+            }
+
+            pulledJob = new JobRankDetails(
+                    titleEntryField.getText().toString(),
+                    companyEntryField.getText().toString(),
+                    locationEntryField.getText().toString(),
+                    Integer.parseInt(costOfLivingEntryField.getText().toString()),
+                    Integer.parseInt(annualSalaryEntryField.getText().toString()),
+                    Integer.parseInt(annualBonusEntryField.getText().toString()),
+                    Integer.parseInt(retirementBenefitsEntryField.getText().toString()),
+                    Integer.parseInt(relocationStipendEntryField.getText().toString()),
+                    Integer.parseInt(trainingFundEntryField.getText().toString()),
+                    switchForCurrentJobIndicator.isChecked());
+
+            if (switchForCurrentJobIndicator.isChecked()){
+                switchForCurrentJobIndicator.setChecked(false);
+
+                Toast.makeText(Job_Entry.this,
+                        "New Entry Job pulled for comparison", Toast.LENGTH_SHORT).show();
+
+            }
+
+
+
+        } catch (IllegalArgumentException e) {
+            Toast.makeText(Job_Entry.this,
+                    e.getMessage(),
+                    Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+
+            Toast.makeText(Job_Entry.this,
+                    "Unknown Exception caught and data not pulledd.",
+                    Toast.LENGTH_SHORT).show();
+
+
+
+        }
+
+        // Note if toast responses are not working just clear user data and try again.
+        // Helpful link: https://www.youtube.com/watch?v=ZK3_ib-g_no&ab_channel=CodingPursuits
+
+
+
+
+
+
+
+        return pulledJob;
     }
 
 //    public void saveToTheSQLiteDB() {
