@@ -14,8 +14,9 @@
     <string name="Job2Selection">Job 2 Selection</string>
     <string name="CompareJobs">Compare Jobs</string>
     <string name="Cancel">Cancel</string>
-    <string name="CurrentJob">Current Job ?</string>
+    <string name="CurrentJob">Is this your current Job ?</string>
     <string name="SaveCurrentJobLabel">Save</string>
     <string name="EnterAnotherJob">Enter Another Job</string>
+    <string name="SetADifferentCurrentJob">Current Job Select</string>
 
 </resources>

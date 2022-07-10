@@ -421,27 +421,69 @@
                     android:layout_weight="1"
                     android:backgroundTint="#003057"
                     android:text="@string/SaveCurrentJobLabel" />
-            </LinearLayout>
 
-            <Switch
-                android:id="@+id/currentJobSwitch"
-                android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:text="@string/CurrentJob"
-                android:textAlignment="center" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="410dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Switch
+                        android:id="@+id/currentJobSwitch"
+                        android:layout_width="190dp"
+                        android:layout_height="49dp"
+                        android:text="@string/CurrentJob"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/selectCurrentFromPriorEntriesBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:backgroundTint="#003057"
+                        android:text="@string/SetADifferentCurrentJob" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
         </LinearLayout>
 
-        <Button
-            android:id="@+id/enterAnotherBtn"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#003057"
-            android:text="@string/EnterAnotherJob" />
+            android:layout_height="74dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/enterAnotherBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#003057"
+                    android:text="@string/EnterAnotherJob" />
+
+                <Button
+                    android:id="@+id/compareCurrentToThisBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#003057"
+                    android:text="Compare w/ Current" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
