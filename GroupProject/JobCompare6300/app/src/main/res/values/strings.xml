@@ -18,5 +18,6 @@
     <string name="SaveCurrentJobLabel">Save</string>
     <string name="EnterAnotherJob">Enter Another Job</string>
     <string name="SetADifferentCurrentJob">Current Job Select</string>
+    <string name="ReturnToJobEntry">Return To Job Entry</string>
 
 </resources>
