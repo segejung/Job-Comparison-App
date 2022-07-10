@@ -30,6 +30,7 @@ public class Job_Entry extends AppCompatActivity {
     private EditText relocationStipendEntryField;
     private EditText trainingFundEntryField;
     private Switch switchForCurrentJobIndicator;
+    private Button enterAnotherOneBtn;
 
 
     @Override
@@ -50,6 +51,7 @@ public class Job_Entry extends AppCompatActivity {
         relocationStipendEntryField = findViewById(R.id.RelocationStipendEntryField);
         trainingFundEntryField = findViewById(R.id.TrainingFundEntryField);
         switchForCurrentJobIndicator = findViewById(R.id.currentJobSwitch);
+
 
 
         saveBtn = findViewById(R.id.saveJobEntryBtn);
@@ -151,6 +153,16 @@ public class Job_Entry extends AppCompatActivity {
 
 
         });
+
+        enterAnotherOneBtn = findViewById(R.id.enterAnotherBtn);
+        enterAnotherOneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                clearJobTextFields();
+
+            }
+        });
     }
 
     public void openMainMenu() {
@@ -176,6 +188,25 @@ public class Job_Entry extends AppCompatActivity {
     public boolean isValidTrainingFund (String trainingFund) {
         int fundAmount = Integer.parseInt(trainingFund);
         return (fundAmount >= 0) && (fundAmount <= 18000);
+    }
+
+    public void clearJobTextFields() {
+
+        //Clears all text fields
+        titleEntryField.setText("");
+        companyEntryField.setText("");
+        locationEntryField.setText("");
+        costOfLivingEntryField.setText("");
+        annualSalaryEntryField.setText("");
+        annualBonusEntryField.setText("");
+        retirementBenefitsEntryField.setText("");
+        relocationStipendEntryField.setText("");
+        trainingFundEntryField.setText("");
+
+        //Undo switch even if it was true
+        switchForCurrentJobIndicator.setChecked(false);
+
+
     }
 
 //    public void saveToTheSQLiteDB() {
