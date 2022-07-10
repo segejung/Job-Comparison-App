@@ -16,5 +16,6 @@
     <string name="Cancel">Cancel</string>
     <string name="CurrentJob">Current Job ?</string>
     <string name="SaveCurrentJobLabel">Save</string>
+    <string name="EnterAnotherJob">Enter Another Job</string>
 
 </resources>
