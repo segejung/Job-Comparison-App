@@ -92,7 +92,7 @@ A state machine can be designed for deliverable 3 when all of our application fe
 
 - Here is how it looks populated.
 
-![](../images/All_Jobs_Display_populated_UI.JPG)
+![](../images/All_Jobs_Display_populated_UI_2.JPG)
 
 ### Job Comparison
 
