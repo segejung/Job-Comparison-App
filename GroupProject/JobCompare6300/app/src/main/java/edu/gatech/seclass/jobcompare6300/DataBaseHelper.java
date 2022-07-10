@@ -322,6 +322,66 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         return weights;
     }
 
+    public boolean checkForACurrentJobInTheDB()
+    {
+        SQLiteDatabase appDB = this.getReadableDatabase();
+        boolean isThereACurrentJob;
+
+        String currentJobCheckQuery = "SELECT * FROM " + JOB_OFFER_TABLE + " WHERE " + COLUMN_IS_CURRENT_JOB + " =?";
+        String[] args = {"1"};
+        Cursor cursor = appDB.rawQuery(currentJobCheckQuery,args);
+
+        if (cursor != null) {
+            isThereACurrentJob = true;
+        } else {
+            isThereACurrentJob = false;
+        }
+
+        return isThereACurrentJob;
+    }
+
+    public JobRankDetails getCurrentJobInTheDB() {
+        SQLiteDatabase appDB = this.getReadableDatabase();
+        JobRankDetails yourCurrentJob;
+
+        String currentJobCheckQuery = "SELECT * FROM " + JOB_OFFER_TABLE + " WHERE " + COLUMN_IS_CURRENT_JOB + " =?";
+        String[] args = {"1"};
+        Cursor cursor = appDB.rawQuery(currentJobCheckQuery, args);
+
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                Integer jobID = cursor.getInt(0);
+                String jobTitle = cursor.getString(1);
+                String jobCompanyName = cursor.getString(2);
+                String jobLocation = cursor.getString(3);
+                Integer jobCostOfLiving = cursor.getInt(4);
+                Integer jobAnnualSalary = cursor.getInt(5);
+                Integer jobAnnualBonus = cursor.getInt(6);
+                Integer jobRetirementBenefits = cursor.getInt(7);
+                Integer jobRelocationStipend = cursor.getInt(8);
+                Integer jobTrainingAndDevFund = cursor.getInt(9);
+                boolean currentJobIndicator = cursor.getInt(10) == 1 ? true : false;
+                Double jobScore = cursor.getDouble(11);
+
+                yourCurrentJob = new JobRankDetails(jobTitle, jobCompanyName, jobLocation,
+                        jobCostOfLiving, jobAnnualSalary, jobAnnualBonus, jobRetirementBenefits,
+                        jobRelocationStipend, jobTrainingAndDevFund, currentJobIndicator);
+
+            } while (cursor.moveToNext());
+
+        } else {
+
+            yourCurrentJob = new JobRankDetails(); // Empty constructor (but shouldn't happen)
+
+        }
+        cursor.close();
+        appDB.close();
+
+        return yourCurrentJob;
+    }
+
     public void updateJobScores() {
         SQLiteDatabase appDB = this.getReadableDatabase();
 
@@ -399,28 +459,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
             appDBWrite.update(JOB_OFFER_TABLE,updateScores_cv,"JOB_ID=?",new String[]{whereArgs});
 
 
-//            if (insert == -1) { // Kicks back negative if it is a bad insert
-//                return false;
-//            } else {
-//                return true;
-//            }
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -458,6 +497,66 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         appDB.close();
 
         return matchedJob;
+    }
+
+    public List<JobRankDetails> getNonCurrentOffers() {
+        List<JobRankDetails> returnedNonCurrentJobOffers = new ArrayList<>();
+
+        // This code will pull data from the database
+
+        String queryRequestStr = "SELECT * FROM " + JOB_OFFER_TABLE
+                + " WHERE " + COLUMN_IS_CURRENT_JOB + " = " + String.valueOf(0);
+        SQLiteDatabase appDB = this.getReadableDatabase(); // We just want to read the database here.
+
+        Cursor cursor = appDB.rawQuery(queryRequestStr,null);
+        double calculatedJobScore = 0.0;
+        DecimalFormat df = new DecimalFormat("#.##");
+
+
+        if(cursor.moveToFirst()) {
+            // We want to iterate through the list here and create a JobRankDetails obj for each row
+            do {
+                // Omit primary key id
+                String jobTitle = cursor.getString(1);
+                String jobCompanyName = cursor.getString(2);
+                String jobLocation = cursor.getString(3);
+                Integer jobCostOfLiving = cursor.getInt(4);
+                Integer jobAnnualSalary = cursor.getInt(5);
+                Integer jobAnnualBonus = cursor.getInt(6);
+                Integer jobRetirementBenefits = cursor.getInt(7);
+                Integer jobRelocationStipend = cursor.getInt(8);
+                Integer jobTrainingAndDevFund = cursor.getInt(9);
+                boolean currentJobIndicator = cursor.getInt(10) == 1 ? true: false;
+                calculatedJobScore = cursor.getDouble(11);
+
+                // Omit job score (this should be hidden)
+
+                JobRankDetails listedJob = new JobRankDetails(jobTitle,jobCompanyName,jobLocation,
+                        jobCostOfLiving,jobAnnualSalary,jobAnnualBonus,jobRetirementBenefits,
+                        jobRelocationStipend,jobTrainingAndDevFund,currentJobIndicator);
+//                calculatedJobScore = this.computeJobScore(listedJob);
+
+                listedJob.setJobScore(Double.valueOf(df.format(calculatedJobScore)));
+                returnedNonCurrentJobOffers.add(listedJob);
+
+            } while (cursor.moveToNext());
+        } else {
+
+            // Empty list
+        }
+
+        //close db connection
+        cursor.close();
+        appDB.close();
+
+        //Sorting action for the list of offers
+        Collections.sort(returnedNonCurrentJobOffers, new Comparator<JobRankDetails>() {
+            public int compare(JobRankDetails j1, JobRankDetails j2) {
+                return Double.compare(j1.getJobScore(),j2.getJobScore());
+            }
+        }.reversed()); // This was clever lol, don't know how I missed that, guess I was tired. - Nelson R.
+
+        return returnedNonCurrentJobOffers;
     }
 
     public List<JobRankDetails> getOffers() {
@@ -564,6 +663,66 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         return returnedJobObjects;
     }
 
+    public List<Pair> getNonCurrentOffersWithIDs() {
+        List<Pair> returnedJobOffersAndIDs = new ArrayList<>();
+
+        // This code will pull data from the database
+
+        String queryRequestStr = "SELECT * FROM " + JOB_OFFER_TABLE + " WHERE " + COLUMN_IS_CURRENT_JOB + " =?";
+        String[] args = {"0"};
+        SQLiteDatabase appDB = this.getReadableDatabase(); // We just want to read the database here.
+
+        Cursor cursor = appDB.rawQuery(queryRequestStr,null);
+
+        if(cursor.moveToFirst()) {
+            // We want to iterate through the list here and create a JobDetails obj for each row
+            do {
+                Integer jobID = cursor.getInt(0);
+                String jobTitle = cursor.getString(1);
+//                String jobCompanyName = cursor.getString(2);
+//                String jobLocation = cursor.getString(3);
+//                Integer jobCostOfLiving = cursor.getInt(4);
+//                Integer jobAnnualSalary = cursor.getInt(5);
+//                Integer jobAnnualBonus = cursor.getInt(6);
+//                Integer jobRetirementBenefits = cursor.getInt(7);
+//                Integer jobRelocationStipend = cursor.getInt(8);
+//                Integer jobTrainingAndDevFund = cursor.getInt(9);
+//                boolean currentJobIndicator = cursor.getInt(10) == 1 ? true: false;
+
+                // Omit job score (this should be hidden)
+
+                Pair<Integer,String> jobPair = new Pair<Integer, String>(jobID,jobTitle);
+                returnedJobOffersAndIDs.add(jobPair);
+
+            } while (cursor.moveToNext());
+        } else {
+
+            // Empty list
+        }
+
+        //close db connection
+        cursor.close();
+        appDB.close();
+
+        return returnedJobOffersAndIDs;
+    }
+
+    public void setNewCurrentJob(int jobId) {
+
+        JobDetails matchedJob = null;
+
+        SQLiteDatabase appDB = this.getWritableDatabase();
+
+        String whereArgs = String.valueOf(jobId);
+
+        ContentValues currentJob_cv = new ContentValues();
+        currentJob_cv.put(COLUMN_IS_CURRENT_JOB,1);
+
+        appDB.update(JOB_OFFER_TABLE,currentJob_cv,"JOB_ID=?",new String[]{whereArgs});
+
+
+
+    }
 
 
 
@@ -577,8 +736,6 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         SQLiteDatabase appDB = this.getReadableDatabase(); // We just want to read the database here.
 
         Cursor cursor = appDB.rawQuery(queryRequestStr,null);
-
-        // TODO: Change this so it sorts by Job Score first and then does this iteration, it may be worth placing this in the a sort function to do prior to listing
 
         if(cursor.moveToFirst()) {
             // We want to iterate through the list here and create a JobDetails obj for each row

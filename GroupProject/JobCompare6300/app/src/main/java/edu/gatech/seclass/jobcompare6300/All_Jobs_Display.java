@@ -144,6 +144,7 @@ public class All_Jobs_Display extends AppCompatActivity implements AdapterView.O
         ArrayAdapter<Pair> adapter = new ArrayAdapter<Pair>(this,android.R.layout.simple_spinner_dropdown_item, (List<Pair>) jobPairsFromDB);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerToChange.setAdapter(adapter);
+        spinnerToChange.setSelection(1);
     }
 
     public void startComparison() {
