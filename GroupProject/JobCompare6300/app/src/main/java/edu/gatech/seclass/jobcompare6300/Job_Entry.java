@@ -108,6 +108,8 @@ public class Job_Entry extends AppCompatActivity {
 
                     }
 
+
+
                     boolean dbSuccess = dataBaseHelper.addOne(jobOfferDetails);
 
                     Toast.makeText(Job_Entry.this,
@@ -180,12 +182,20 @@ public class Job_Entry extends AppCompatActivity {
                     currentJobOfUser = dataBaseHelper.getCurrentJobInTheDB();
                     enteredJob = pullTextFieldsEntry();
 
+                    Toast.makeText(Job_Entry.this,
+                            "Current Job: "+ currentJobOfUser,Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(Job_Entry.this,
+                            "Job to be compared : "+ enteredJob,Toast.LENGTH_SHORT).show();
+
+                    // then if so run this
+                    openJobCompareActivity(currentJobOfUser,enteredJob);
+
                 } else {
                     Toast.makeText(Job_Entry.this,
                             "There is no current job to be compared.",Toast.LENGTH_SHORT).show();
                 }
-                // then if so run this
-                //openJobCompareActivity;
+
 
 
             }
@@ -317,11 +327,45 @@ public class Job_Entry extends AppCompatActivity {
         return pulledJob;
     }
 
-//    public void saveToTheSQLiteDB() {
-//        Intent intent = new Intent(this, MainActivity.class);
-//        startActivity(intent);
-//
-//    } Not used, database helper does it
+    public void openJobCompareActivity(JobRankDetails job1, JobRankDetails job2) {
+
+        Bundle bundle = new Bundle();
+
+
+        double job1AdjustedSalary = ((double) job1.getSalary()) / (((double) job1.getCostOfLiving()) / 100.0);
+        double job1AdjustedBonus = ((double) job1.getBonus()) / (((double) job1.getCostOfLiving()) / 100.0);
+        double job2AdjustedSalary = ((double) job2.getSalary()) / (((double) job2.getCostOfLiving()) / 100.0);
+        double job2AdjustedBonus = ((double) job2.getBonus()) / (((double) job2.getCostOfLiving()) / 100.0);
+
+        bundle.putString("job1Title", job1.getTitle());
+        bundle.putString("job1Company", job1.getCompany());
+        bundle.putString("job1Location", job1.getLocation());
+        bundle.putString("job1adjustedSalary", String.format("%.2f", job1AdjustedSalary));
+        bundle.putString("job1adjustedBonus", String.format("%.2f", job1AdjustedBonus));
+        bundle.putString("job1Benefits", String.valueOf(job1.getRetirementBenefits()));
+        bundle.putString("job1Stipend", String.valueOf(job1.getRelocationStipend()));
+        bundle.putString("job1trainingFund", String.valueOf(job1.getTrainingAndDevelopmentFund()));
+
+        bundle.putString("job2Title", job2.getTitle());
+        bundle.putString("job2Company", job2.getCompany());
+        bundle.putString("job2Location", job2.getLocation());
+        bundle.putString("job2adjustedSalary", String.format("%.2f", job2AdjustedSalary));
+        bundle.putString("job2adjustedBonus", String.format("%.2f", job2AdjustedBonus));
+        bundle.putString("job2Benefits", String.valueOf(job2.getRetirementBenefits()));
+        bundle.putString("job2Stipend", String.valueOf(job2.getRelocationStipend()));
+        bundle.putString("job2trainingFund", String.valueOf(job2.getTrainingAndDevelopmentFund()));
+
+        Intent intent = new Intent(this, Job_Compare.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+
+//        double job1AdjustedSalary = ((double) job1.getSalary()) / (((double) job1.getCostOfLiving()) / 100.0);
+//        double job1AdjustedBonus = ((double) job1.getBonus()) / (((double) job1.getCostOfLiving()) / 100.0);
+//        double job2AdjustedSalary = ((double) job2.getSalary()) / (((double) job2.getCostOfLiving()) / 100.0);
+//        double job2AdjustedBonus = ((double) job2.getBonus()) / (((double) job2.getCostOfLiving()) / 100.0);
+
+    }
 
 
 
