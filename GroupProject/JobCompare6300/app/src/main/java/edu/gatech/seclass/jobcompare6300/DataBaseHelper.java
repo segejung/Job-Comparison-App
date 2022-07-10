@@ -322,23 +322,36 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         return weights;
     }
 
-    public boolean checkForACurrentJobInTheDB()
-    {
+    public boolean checkForACurrentJobInTheDB() {
         SQLiteDatabase appDB = this.getReadableDatabase();
-        boolean isThereACurrentJob;
+//        boolean isThereACurrentJob;
 
-        String currentJobCheckQuery = "SELECT * FROM " + JOB_OFFER_TABLE + " WHERE " + COLUMN_IS_CURRENT_JOB + " =?";
+        String currentJobCheckQuery = "SELECT * FROM " + JOB_OFFER_TABLE
+                + " WHERE " + COLUMN_IS_CURRENT_JOB + " =?";
         String[] args = {"1"};
-        Cursor cursor = appDB.rawQuery(currentJobCheckQuery,args);
 
-        if (cursor != null) {
-            isThereACurrentJob = true;
-        } else {
-            isThereACurrentJob = false;
+        Cursor cursor = appDB.rawQuery(currentJobCheckQuery, args);
+
+
+        String jobTitle;
+        String jobCompany;
+        String jobLocation;
+
+        if (cursor.moveToFirst()) {
+            do {
+                jobTitle = cursor.getString(1);
+                jobCompany = cursor.getString(2);
+                jobLocation = cursor.getString(3);
+
+            } while (cursor.moveToNext());
+
+            if (!jobTitle.isEmpty() && !jobCompany.isEmpty() && !jobLocation.isEmpty()) {
+                return true;
+            }
         }
-
-        return isThereACurrentJob;
+            return false;
     }
+
 
     public JobRankDetails getCurrentJobInTheDB() {
         SQLiteDatabase appDB = this.getReadableDatabase();
