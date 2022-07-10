@@ -174,6 +174,29 @@ public class Job_Entry extends AppCompatActivity {
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(Job_Entry.this);
                 JobRankDetails currentJobOfUser;
                 JobRankDetails enteredJob;
+
+                try { // Try catch for any input exceptions
+
+                    if (!isValidLocationInput(locationEntryField.getText().toString())) {
+                        locationEntryField.setError("Invalid location");
+                        throw new IllegalArgumentException("Invalid location entry");
+                    }
+
+                    if (!isValidColIndexInput(costOfLivingEntryField.getText().toString())) {
+                        costOfLivingEntryField.setError("Invalid Cost of Living Index");
+                        throw new IllegalArgumentException("Invalid Cost of Living Index");
+                    }
+
+                    if (!isValidRetirementBenefit(retirementBenefitsEntryField.getText().toString())) {
+                        retirementBenefitsEntryField.setError("Invalid Retirement Benefits");
+                        throw new IllegalArgumentException("Invalid Retirement Benefits");
+                    }
+
+                    if (!isValidTrainingFund(trainingFundEntryField.getText().toString())) {
+                        trainingFundEntryField.setError("Invalid Training Fund Amount");
+                        throw new IllegalArgumentException("Invalid Training Fund Amount");
+                    }
+
                 if(dataBaseHelper.checkForACurrentJobInTheDB())
                 {
                     Toast.makeText(Job_Entry.this,
@@ -196,22 +219,46 @@ public class Job_Entry extends AppCompatActivity {
                             "There is no current job to be compared.",Toast.LENGTH_SHORT).show();
                 }
 
+                } catch (IllegalArgumentException e) {
+                    Toast.makeText(Job_Entry.this,
+                            e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+
+                    Toast.makeText(Job_Entry.this,
+                            "Exception caught and data not saved.",
+                            Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(Job_Entry.this,
+                            "No successful add due to prior exception.",Toast.LENGTH_SHORT).show();
+
+                }
+
 
 
             }
+
         });
 
         selectADifferentCurrentJobBtn = findViewById(R.id.selectCurrentFromPriorEntriesBtn);
         selectADifferentCurrentJobBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //openJobSelectorActivity();
+                openJobSelectorActivity();
             }
         });
+
+
     }
 
     public void openMainMenu() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void openJobSelectorActivity()
+    {
+        Intent intent = new Intent(this, CurrentJobSelect.class);
         startActivity(intent);
     }
 
