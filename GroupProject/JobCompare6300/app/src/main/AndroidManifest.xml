@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JobCompare6300"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Update_Current_Job"></activity>
+        <activity android:name=".CurrentJobSelect"></activity>
+        <activity android:name=".Update_Current_Job" />
         <activity android:name=".All_Jobs_Display" />
         <activity android:name=".Settings" />
         <activity android:name=".Job_Compare" />
