@@ -99,4 +99,4 @@ A state machine can be designed for deliverable 3 when all of our application fe
 - Here is the UI for performing the job comparison. This is behind the All_Jobs_Display UI since you have to select the jobs using the spinners for it to be ported over to the comparison table.
 - The "Go Back" button provides the user a way to return to the main menu.
 
-![](../images/Job_Compare_UI.JPG)
+![](../images/Job_Compare_UI_2.JPG)
