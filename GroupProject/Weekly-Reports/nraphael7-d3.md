@@ -14,9 +14,9 @@ My accomplishments for this deliverable
 - Added visibility of job comparison option as a dependency of a minimum of two jobs in the database and invoke that method on create of the main activity
 - Fixed the bug with the currentJob boolean being set and persisting in the database
 - Working on updating documentation
-  - Component Diagram
+  - Component Diagram [done]
   - UML Diagram
-  - Design Document
+  - Design Document [done]
     - Adding new UI pictures and explaining their usage
 - Created a new layout and class for CurrentJobSelect so the user can choose a current job from prior entries.
 - Added buttons to the Job Entry layout to support CurrentJobSelect and comparison with the current job and provided back end integration for these features.

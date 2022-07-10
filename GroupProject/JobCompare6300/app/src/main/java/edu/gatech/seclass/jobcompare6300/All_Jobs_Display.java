@@ -98,9 +98,15 @@ public class All_Jobs_Display extends AppCompatActivity implements AdapterView.O
             @Override
             public void onClick(View v) {
                 DataBaseHelper dataBaseHelper = new DataBaseHelper(All_Jobs_Display.this);
-                startComparison();
-                Toast.makeText(All_Jobs_Display.this,"Starting comparison",
-                        Toast.LENGTH_SHORT).show();
+                try {
+                    startComparison();
+                    Toast.makeText(All_Jobs_Display.this,"Starting comparison",
+                            Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(All_Jobs_Display.this,
+                            "Invalid Job Entries for comparison",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -109,9 +115,10 @@ public class All_Jobs_Display extends AppCompatActivity implements AdapterView.O
         cancelCompareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                returnToMainMenu();
                 Toast.makeText(All_Jobs_Display.this,"Returning to main menu",
                         Toast.LENGTH_SHORT).show();
+                returnToMainMenu();
+
             }
         });
 
