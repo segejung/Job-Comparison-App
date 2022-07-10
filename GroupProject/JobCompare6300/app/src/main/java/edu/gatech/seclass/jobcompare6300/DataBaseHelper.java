@@ -322,6 +322,29 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
         return weights;
     }
 
+    public boolean checkForACurrentJobInTheDB()
+    {
+        SQLiteDatabase appDB = this.getReadableDatabase();
+        boolean isThereACurrentJob;
+
+        String currentJobCheckQuery = "SELECT * FROM " + JOB_OFFER_TABLE + " WHERE " + COLUMN_IS_CURRENT_JOB + " =?";
+        String[] args = {"1"};
+        Cursor cursor = appDB.rawQuery(currentJobCheckQuery,args);
+
+        if (cursor != null) {
+            isThereACurrentJob = true;
+        } else {
+            isThereACurrentJob = false;
+        }
+
+
+
+
+
+
+        return isThereACurrentJob;
+    }
+
     public void updateJobScores() {
         SQLiteDatabase appDB = this.getReadableDatabase();
 
@@ -399,28 +422,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
             appDBWrite.update(JOB_OFFER_TABLE,updateScores_cv,"JOB_ID=?",new String[]{whereArgs});
 
 
-//            if (insert == -1) { // Kicks back negative if it is a bad insert
-//                return false;
-//            } else {
-//                return true;
-//            }
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
