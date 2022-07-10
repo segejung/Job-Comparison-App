@@ -120,7 +120,7 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
 
 //    public boolean deleteDatabaseEntry(JobRankDetails jobObj)
 //    {
-//        //TODO: Find Customer Model in DB and then delete it
+//        /// Not required by assignment requirements.
 //        SQLiteDatabase db = this.getWritableDatabase();
 //        String queryStr = "DELETE FROM " +JOB_OFFER_TABLE + "WHERE " + JOB_ID + " = "
 //
