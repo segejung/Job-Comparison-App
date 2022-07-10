@@ -337,12 +337,49 @@ public class DataBaseHelper extends  SQLiteOpenHelper{
             isThereACurrentJob = false;
         }
 
-
-
-
-
-
         return isThereACurrentJob;
+    }
+
+    public JobRankDetails getCurrentJobInTheDB() {
+        SQLiteDatabase appDB = this.getReadableDatabase();
+        JobRankDetails yourCurrentJob;
+
+        String currentJobCheckQuery = "SELECT * FROM " + JOB_OFFER_TABLE + " WHERE " + COLUMN_IS_CURRENT_JOB + " =?";
+        String[] args = {"1"};
+        Cursor cursor = appDB.rawQuery(currentJobCheckQuery, args);
+
+        if (cursor.moveToFirst()) {
+
+            do {
+
+                Integer jobID = cursor.getInt(0);
+                String jobTitle = cursor.getString(1);
+                String jobCompanyName = cursor.getString(2);
+                String jobLocation = cursor.getString(3);
+                Integer jobCostOfLiving = cursor.getInt(4);
+                Integer jobAnnualSalary = cursor.getInt(5);
+                Integer jobAnnualBonus = cursor.getInt(6);
+                Integer jobRetirementBenefits = cursor.getInt(7);
+                Integer jobRelocationStipend = cursor.getInt(8);
+                Integer jobTrainingAndDevFund = cursor.getInt(9);
+                boolean currentJobIndicator = cursor.getInt(10) == 1 ? true : false;
+                Double jobScore = cursor.getDouble(11);
+
+                yourCurrentJob = new JobRankDetails(jobTitle, jobCompanyName, jobLocation,
+                        jobCostOfLiving, jobAnnualSalary, jobAnnualBonus, jobRetirementBenefits,
+                        jobRelocationStipend, jobTrainingAndDevFund, currentJobIndicator);
+
+            } while (cursor.moveToNext());
+
+        } else {
+
+            yourCurrentJob = new JobRankDetails(); // Empty constructor (but shouldn't happen)
+
+        }
+        cursor.close();
+        appDB.close();
+
+        return yourCurrentJob;
     }
 
     public void updateJobScores() {
