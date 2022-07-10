@@ -31,6 +31,8 @@ public class Job_Entry extends AppCompatActivity {
     private EditText trainingFundEntryField;
     private Switch switchForCurrentJobIndicator;
     private Button enterAnotherOneBtn;
+    private Button compareWithCurrentJobBtn;
+    private Button selectADifferentCurrentJobBtn;
 
 
     @Override
@@ -133,8 +135,6 @@ public class Job_Entry extends AppCompatActivity {
 
                 }
 
-
-
                 // Note if toast responses are not working just clear user data and try again.
                 // Helpful link: https://www.youtube.com/watch?v=ZK3_ib-g_no&ab_channel=CodingPursuits
 
@@ -161,6 +161,35 @@ public class Job_Entry extends AppCompatActivity {
 
                 clearJobTextFields();
 
+            }
+        });
+
+        compareWithCurrentJobBtn = findViewById(R.id.compareCurrentToThisBtn);
+        compareWithCurrentJobBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // check if there is a current job in the database
+                DataBaseHelper dataBaseHelper = new DataBaseHelper(Job_Entry.this);
+                if(dataBaseHelper.checkForACurrentJobInTheDB())
+                {
+                    Toast.makeText(Job_Entry.this,
+                            "There is a current job to be compared.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(Job_Entry.this,
+                            "There is no current job to be compared.",Toast.LENGTH_SHORT).show();
+                }
+                // then if so run this
+                //openJobCompareActivity;
+
+                //otherwise toast and say no current job set
+            }
+        });
+
+        selectADifferentCurrentJobBtn = findViewById(R.id.selectCurrentFromPriorEntriesBtn);
+        selectADifferentCurrentJobBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //openJobSelectorActivity();
             }
         });
     }
