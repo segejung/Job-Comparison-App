@@ -57,9 +57,13 @@ A state machine can be designed for deliverable 3 when all of our application fe
 
 ### Main Menu
 
-- Here is the main menu UI for our application, also known as our main entry point. The user will have four options (truly only three if no job offers have been entered yet). 
+- Here is the main menu UI for our application, also known as our main entry point. The user will have four options.
 
 ![](../images/Main_Menu_UI.JPG)
+
+- The "Compare Jobs" button is hidden if there aren't at least two job entries in the database.
+
+![](../images/Main_Menu_UI_without_enough_entries.JPG)
 
 ### Update Current Job
 
@@ -70,13 +74,22 @@ A state machine can be designed for deliverable 3 when all of our application fe
 
 ### Job Entry
 
-- Here is the UI for just entering in job offers received. Using the switch at the bottom the user can designate if the job being entered will be the new current job, rather than the automatic designation presented in the Update_Current_Job UI.
+- Here is the UI for just entering in job offers received. Using the switch at the bottom the user can designate if the job being entered will be the new current job, rather than the automatic designation presented in the Update_Current_Job UI. 
+- Also, the save button automatically returns the user to the main menu.
+- Each of the other buttons have similar or distinct features
+  - Save Button: Saves the current entry to the SQLite Database and returns the user to the main menu
+  - Cancel Button: Cancels the entry action and returns the user to the main menu
+  - Enter Another Job: Clears all the current text fields on the entry page
+  - Current Job Select: Allows the user to designate a new current job among the prior entries in the database that do not hold the current job status. This takes them to the Current Job Select layout.
+  - Compare w/ Current: Takes the user to the Job Comparison page and sets Job 1 entries to the user's current job and sets the Job 2 entries to the entries that make up the job details on the previous job entry page. This however does not save the new job entry to the database.
+    - This will not activate if there is not a job in the database that holds the isCurrent status.
 
 ![](../images/Job_Entry_UI.JPG)
 
 ### Adjust Settings Page
 
 - Here is the UI for adjusting the settings of the integer weights. We decided to go with a slider to constrain the types of inputs available for the user.
+- The sliders also automatically change to the current number set for each of the weight calculations. Thus, reminding the user what the current weights are. These weights are stored in the database.
 
 ![](../images/Adjust_Settings_UI.JPG)
 
@@ -94,9 +107,16 @@ A state machine can be designed for deliverable 3 when all of our application fe
 
 ![](../images/All_Jobs_Display_populated_UI_2.JPG)
 
+- This layout is only populated when the "View Jobs" button is hit.
+- The "Compare Jobs" button will compare what the current selected entries are on the job 1 and job 2 spinners.
+  - It will not activate if the fields are empty.
+- The "Cancel" button returns the user to the main menu.
+
 ### Job Comparison
 
 - Here is the UI for performing the job comparison. This is behind the All_Jobs_Display UI since you have to select the jobs using the spinners for it to be ported over to the comparison table.
-- The "Go Back" button provides the user a way to return to the main menu.
+- The "Return" button provides the user a way to return to the main menu.
+- The "Compare Again" button provides a way to return to the All Jobs display layout to select another two to compare.
+- The "Return To Job Entry" button provides a way to go to the job entry page in case the user wanted to enter in another job offer.
 
-![](../images/Job_Compare_UI_2.JPG)
+![](../images/Job_Compare_UI.JPG)
