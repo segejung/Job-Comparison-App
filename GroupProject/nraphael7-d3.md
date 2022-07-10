@@ -16,3 +16,8 @@ My accomplishments for this deliverable
 - Working on updating documentation
   - Component Diagram
   - UML Diagram
+  - Design Document
+    - Adding new UI pictures and explaining their usage
+- Created a new layout and class for CurrentJobSelect so the user can choose a current job from prior entries.
+- Added buttons to the Job Entry layout to support CurrentJobSelect and comparison with the current job and provided back end integration for these features.
+- Fixed bug for checkForCurrentJobInDB method within the DatabaseHelper class.
