@@ -1,5 +1,5 @@
 My accomplishments for this deliverable:
-- Use Case Markdown File
-- Assist on the TestPlan
-- Creating the UI for the Job Details Interface
-- Assisting with the Main UI integration with Job Details Interface
+- update settings UI to match rest of the UI theme
+- perform QA on app functionality
+- look into error messages (set error)
+- look into why retirement fund is not setting error
