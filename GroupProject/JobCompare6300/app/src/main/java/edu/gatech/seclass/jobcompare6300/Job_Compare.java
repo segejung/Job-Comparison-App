@@ -14,6 +14,7 @@ public class Job_Compare extends AppCompatActivity {
 
     private Button goBackBtn;
     private Button compareAgainBtn;
+    private Button returnToJobEntryBtn;
     public SQLiteDatabase appDB;
 
     @Override
@@ -26,6 +27,14 @@ public class Job_Compare extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 compareJobsAgain();
+            }
+        });
+
+        returnToJobEntryBtn = findViewById(R.id.returnToJobEntryBtn);
+        returnToJobEntryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTheJobEntryPage();
             }
         });
 
@@ -90,6 +99,13 @@ public class Job_Compare extends AppCompatActivity {
         Toast.makeText(Job_Compare.this,"Redoing Comparison",
                 Toast.LENGTH_SHORT).show();
 
+    }
+
+    public void openTheJobEntryPage() {
+        Intent intent = new Intent(this,Job_Entry.class);
+        startActivity(intent);
+        Toast.makeText(Job_Compare.this,"Returning to Job Entry",
+                Toast.LENGTH_SHORT).show();
     }
 
 
