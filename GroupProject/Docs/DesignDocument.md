@@ -39,13 +39,16 @@ There are two different components at play here for this application. There will
 
 ## 3 Low-Level Design
 
-*Describe the low-level design for each of the system components identified in the previous section. For each component, you should provide details in the following UML diagrams to show its internal structure.*
 
 ### 3.1 Class Diagram
 
-Here is an updated class diagram of our application, where the user interfaces have been realized. It is still a work in progress since some attributes within the prior design have been realized in another way, while other relationships and methods are being fine tuned.
+Here is an updated class diagram of our application, where the user interfaces have been realized. Here is the final product. It is evident the dependency on the DatabaseHelper and JobRankDetails class throughout all of the classes. This is due to the database management methods such as getting offers, checking their current status, calculating the job score, and pulling the weights (which were moved from the previous class into a database table [this was done during a discussion after submission of d2]) are used throughout the application on sometimes one or more than one interface.
 
-![](../images/teamDesign_d2.png)
+Some classes were eliminated entirely from the design and build, since they were in fact not used at all and their desired methods were absorbed into the database helper class, given it had to do with the manipulation of the JobRankDetails object which was rebuilt and sent back through the app for display or comparison.
+
+![](../images/teamDesign_d3.jpg)
+
+- A pdf version of this design is available in the repository as well [here](../images/UML_class_d3.pdf) for viewing.
 
 ### 3.2 Other Diagrams
 
