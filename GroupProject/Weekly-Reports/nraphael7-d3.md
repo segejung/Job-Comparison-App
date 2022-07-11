@@ -15,9 +15,10 @@ My accomplishments for this deliverable
 - Fixed the bug with the currentJob boolean being set and persisting in the database
 - Working on updating documentation
   - Component Diagram [done]
-  - UML Diagram
+  - UML Diagram [done]
   - Design Document [done]
     - Adding new UI pictures and explaining their usage
 - Created a new layout and class for CurrentJobSelect so the user can choose a current job from prior entries.
 - Added buttons to the Job Entry layout to support CurrentJobSelect and comparison with the current job and provided back end integration for these features.
 - Fixed bug for checkForCurrentJobInDB method within the DatabaseHelper class.
+- Eliminated excess code not being used and classes that were unnecessary to the build.
