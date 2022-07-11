@@ -15,7 +15,7 @@ public class Job_Compare extends AppCompatActivity {
     private Button goBackBtn;
     private Button compareAgainBtn;
     private Button returnToJobEntryBtn;
-    public SQLiteDatabase appDB;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
